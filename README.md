@@ -39,7 +39,7 @@ npm i
 ```
 5º - Criar arquivo .env
 ```
-echo .env
+touch .env
 ``` 
 6º - Colocar sua API key dentro do arquivo .env
 ```
