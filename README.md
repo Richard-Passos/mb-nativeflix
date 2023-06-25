@@ -45,7 +45,7 @@ touch .env
 ```
 MEDIAS_KEY=SUA_API_KEY
 ```
-6º - Rodar projeto
+6º - Rodar projeto com expo
 ```
 npm start
 ```
