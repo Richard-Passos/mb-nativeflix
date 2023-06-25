@@ -1,11 +1,11 @@
 <h1 align="center">:file_cabinet: NativeFlix</h1>
 
 ## :memo: Descrição
-Desafio Fullture: criar um app com ReactNative, com o objetivo de listar mídias de um bando de dados (TMDB API). Utilizando do react-navigation para fazer a navegação entre página, o styled-components para uma ótima estilização. O app incluí página inicial (home) para uma visualização geral das mídas, podendo escolher em ver todos os tipos, somente filmes ou somentes series, também incluí página para maiores detalhes de cada mídia, sendo gerada de forma dinâmica através de parametros do react-navigation, página para listagem mais ampla, aplicando o scroll infinito.
+Desafio Fullture: criar um app com ReactNative, com o objetivo de listar mídias de um banco de dados (TMDB API). Utilizando do react-navigation para fazer a navegação entre páginas e o styled-components para uma ótima estilização. O app incluí página inicial (home) para uma visualização geral das mídas, podendo escolher emtre ver todos os tipos de mpidias, somente filmes ou somentes series, também incluí página para maiores detalhes de cada mídia (details), sendo gerada de forma dinâmica através de parametros do react-navigation e página para listagem mais ampla (pagination), aplicando o scroll infinito.
 
 TODO:
-- página de login e register
-- troca de temas
+- Página de login e register
+- Troca de temas
 - Bottom Navigation
 - Página de search
 - Melhorias na organização
