@@ -1,7 +1,15 @@
-<h1 align="center">:file_cabinet: NativeFlix</h1>
+  <h1 align="center">:file_cabinet: NativeFlix</h1>
 
 ## :memo: Descrição
-Desafio Fullture: criar um app com ReactNative, com o objetivo de listar mídias de um banco de dados (TMDB API). Utilizando do react-navigation para fazer a navegação entre páginas e o styled-components para uma ótima estilização. O app incluí página inicial (home) para uma visualização geral das mídas, podendo escolher emtre ver todos os tipos de mpidias, somente filmes ou somentes series, também incluí página para maiores detalhes de cada mídia (details), sendo gerada de forma dinâmica através de parametros do react-navigation e página para listagem mais ampla (pagination), aplicando o scroll infinito.
+Desafio Fullture: criando um app de listagem de mídias com React Native. Aplicativo desenvolvido com o objetivo de fornecer uma experiência aprimorada na listagem de mídias de um banco de dados utilizando a API do TMDB. Com o uso do react-navigation para uma navegação suave entre páginas e do styled-components para uma estilização elegante, proporcionando uma experiência de usuário atraente e intuitiva.
+
+Recursos Principais:
+
+1- Página Inicial (Home): Oferecendo uma visualização geral das mídias disponíveis. Os usuários podem explorar e escolher entre ver todos os tipos de mídias, somente filmes ou somente séries. Essa página fornece uma visão geral dos títulos disponíveis e atrai os usuários para explorar mais detalhes.
+
+2- Página de Detalhes (Details): Ao selecionar uma mídia específica na página inicial, os usuários são direcionados a esta página para obter informações detalhadas sobre a mídia selecionada. Essa página é gerada dinamicamente através de parâmetros fornecidos pelo react-navigation, garantindo uma experiência personalizada para cada título selecionado.
+
+3- Página de Listagem Ampla (Pagination): Essa página permite que os usuários naveguem por uma listagem mais ampla de mídias, aplicando um recurso de scroll infinito. Isso garante que os usuários possam descobrir e explorar uma grande quantidade de títulos de forma contínua, sem limitações de páginação tradicionais.
 
 TODO:
 - Página de login e register
