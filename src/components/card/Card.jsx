@@ -1,26 +1,11 @@
-/* Logic */
-import { IMG_ORIGIN_PATH, normalizeDate } from "../../utils";
-
-/* Components */
-import {
-  Container,
-  Image,
-  TextContainer,
-  Title,
-  Center,
-  Small,
-  Gap,
-  BG,
-} from "./styles";
+import { Container, Image } from "./styles";
 import Link from "../link";
-import Rating from "../rating";
-import Button from "../button";
-import { View } from "react-native";
+import { Info } from "./utils";
+import { IMG_ORIGIN_PATH } from "../../utils";
 
 /* StyleVar could be 'compact' or 'detailed' */
 const Card = ({ media, styleVar = "compact", style }) => {
-  const { type, id, posterPath, title, rating, releaseDate } =
-    normalizeData(media);
+  const { type, id, posterPath } = normalizeData(media);
 
   const link = {
     view: "Details",
@@ -28,8 +13,7 @@ const Card = ({ media, styleVar = "compact", style }) => {
   };
 
   return (
-    <Container key={id} style={style} styleVar={styleVar}>
-      <BG />
+    <Container styleVar={styleVar} style={style}>
       <Link {...link}>
         <Image
           source={{ uri: posterPath }}
@@ -38,45 +22,15 @@ const Card = ({ media, styleVar = "compact", style }) => {
         />
       </Link>
 
-      {styleVar === "detailed" && (
-        <TextContainer>
-          <Gap>
-            <Title numberOfLines={1}>{title}</Title>
-
-            <Rating rating={rating} />
-          </Gap>
-
-          {/* TODO: Add more info */}
-          {/* <Small>({releaseDate})</Small> */}
-
-          <Link {...link}>
-            <Button containerStyle={{ pointerEvents: "none" }}>View</Button>
-          </Link>
-        </TextContainer>
-      )}
+      {styleVar === "detailed" && <Info media={media} link={link} />}
     </Container>
   );
 };
 
-const normalizeData = (media) => {
-  const {
-    name,
-    id,
-    title,
-    poster_path,
-    vote_average,
-    release_date,
-    first_air_date,
-  } = media;
-
-  return {
-    type: name ? "tv" : "movie",
-    id,
-    title: title ?? name,
-    posterPath: IMG_ORIGIN_PATH + poster_path,
-    rating: Math.ceil(vote_average / 2) || 0,
-    releaseDate: normalizeDate(release_date ?? first_air_date),
-  };
-};
+const normalizeData = ({ name, id, poster_path }) => ({
+  type: name ? "tv" : "movie",
+  id,
+  posterPath: IMG_ORIGIN_PATH + poster_path,
+});
 
 export default Card;

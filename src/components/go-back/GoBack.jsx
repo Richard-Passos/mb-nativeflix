@@ -1,9 +1,6 @@
-/* Logic */
 import { useNavigation } from "@react-navigation/native";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components/native";
-
-/* Components */
 import { Container } from "./styles";
 import { Icon } from "react-native-elements";
 

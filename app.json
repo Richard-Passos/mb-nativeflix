@@ -4,10 +4,10 @@
     "slug": "NativeFlix",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/icon.png",
+    "icon": "./src/assets/images/logo.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./src/assets/images/splash.png",
+      "image": "./src/assets/images/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "hsl(240, 64%, 3%)"
     },
@@ -17,12 +17,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/images/adaptive-icon.png",
+        "foregroundImage": "./src/assets/images/logo.png",
         "backgroundColor": "hsl(240, 64%, 3%)"
       }
     },
     "web": {
-      "favicon": "./src/assets/images/favicon.svg"
+      "favicon": "./src/assets/images/favicon.png"
     },
     "packagerOpts": {
       "config": "metro.config.js",

@@ -1,8 +1,5 @@
-/* Logic */
 import { useState, useContext } from "react";
 import { ThemeContext } from "styled-components/native";
-
-/* Components */
 import { Container, Box, Text } from "./styles";
 import { Icon } from "react-native-elements";
 

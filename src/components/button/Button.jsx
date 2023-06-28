@@ -1,4 +1,3 @@
-/* Components */
 import { TouchableOpacity } from "react-native";
 import { Text } from "./styles";
 

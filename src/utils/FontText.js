@@ -1,4 +1,3 @@
-/* Logic */
 import styled from "styled-components/native";
 
 const FontText = styled.Text`

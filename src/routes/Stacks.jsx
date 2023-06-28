@@ -1,12 +1,9 @@
-/* Logic */
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
-/* Components */
 import { NavigationContainer } from "@react-navigation/native";
 import {
-  Home,
   Login,
   Register,
+  Home,
   Details,
   Search,
   Pagination,
@@ -15,7 +12,7 @@ import {
 
 const Stack = createNativeStackNavigator();
 
-const views = [Register, Home, Login, Details, Search, Pagination, Favorites];
+const views = [Login, Register, Home, Details, Search, Pagination, Favorites];
 
 const Stacks = () => (
   <NavigationContainer>

@@ -1,8 +1,5 @@
-/* Logic */
 import { useContext } from "react";
 import { ThemeContext } from "styled-components/native";
-
-/* Components */
 import { Stars } from "./styles";
 import { Icon } from "react-native-elements";
 
@@ -19,7 +16,7 @@ const Rating = ({ rating }) => {
           name="star"
           type="font-awesome"
           size={16}
-          color={i + 1 <= rating && theme.colors.yellow}
+          color={i + 1 <= rating ? theme.colors.yellow : theme.colors.bg}
         />
       ))}
     </Stars>

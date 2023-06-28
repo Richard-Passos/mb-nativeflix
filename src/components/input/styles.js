@@ -1,12 +1,23 @@
-/* Logic */
 import styled from "styled-components/native";
 
-const TextInput = styled.TextInput`
+const Container = styled.View`
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.gray};
-  padding: 8px 16px;
   border-radius: ${({ theme }) => theme.sizes.xl}px;
-  color: ${({ theme }) => theme.colors.primeText};
+  padding: 8px 16px;
+
+  flex-direction: row;
+  align-items: center;
 `;
 
-export { TextInput };
+const TextInput = styled.TextInput`
+  color: ${({ theme }) => theme.colors.priText};
+
+  flex: 1;
+`;
+
+const IconContainer = styled.View`
+  position: absolute;
+  right: 16px;
+`;
+export { Container, TextInput, IconContainer };

@@ -1,21 +1,36 @@
-/* Logic */
-import { useContext } from "react";
-import { ThemeContext } from "styled-components";
+import { useState, useContext } from "react";
+import { ThemeContext } from "styled-components/native";
+import { Container, TextInput, IconContainer } from "./styles";
+import { Icon } from "react-native-elements";
 
-/* Components */
-import { TextInput } from "./styles";
+const Input = ({ reactRef, setState, isPassword = false, placeholder }) => {
+  const [isVisible, setIsVisible] = useState(false);
 
-const Input = ({ reactRef, placeholder, setState, isPassword = false }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <TextInput
-      ref={reactRef}
-      placeholder={placeholder}
-      onChangeText={(text) => setState(text)}
-      secureTextEntry={isPassword}
-      placeholderTextColor={theme.colors.gray}
-    />
+    <Container>
+      <TextInput
+        ref={reactRef}
+        onChangeText={(text) => setState(text)}
+        secureTextEntry={isPassword && !isVisible}
+        placeholder={placeholder}
+        placeholderTextColor={theme.colors.gray}
+        cursorColor={theme.colors.gray}
+      />
+
+      {isPassword && (
+        <IconContainer>
+          <Icon
+            name={isVisible ? "eye" : "eye-slash"}
+            type="font-awesome"
+            size={16}
+            color={theme.colors.priText}
+            onPress={() => setIsVisible((prevState) => !prevState)}
+          />
+        </IconContainer>
+      )}
+    </Container>
   );
 };
 

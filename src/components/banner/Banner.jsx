@@ -1,17 +1,20 @@
-/* Components */
 import { Container, Wrapper, Image } from "./styles";
 import PatternpadSvg from "../../assets/images/patternpad.svg";
+import { viewWidth } from "../../utils";
 
 const Banner = () => (
   <Container>
-    <PatternpadSvg width="100%" height={200} style={{ position: "absolute" }} />
-    {/* Complete empty background */}
-    <PatternpadSvg
-      width="100%"
-      height={200}
-      style={{ position: "absolute", bottom: -200 }}
-    />
-    {/*  */}
+    {/* Create background */}
+    {Array(2)
+      .fill(null)
+      .map((_, i) => (
+        <PatternpadSvg
+          key={i}
+          width={viewWidth}
+          height={200}
+          style={{ position: "absolute", bottom: i === 1 ? -200 : 0 }}
+        />
+      ))}
 
     <Wrapper>
       <Image

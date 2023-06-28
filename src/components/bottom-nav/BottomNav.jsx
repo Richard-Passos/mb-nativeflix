@@ -1,4 +1,3 @@
-/* Components */
 import { Container, Text } from "./styles";
 
 const BottomNav = () => {

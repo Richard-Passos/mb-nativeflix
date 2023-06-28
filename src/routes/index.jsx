@@ -1,4 +1,3 @@
-/* Components */
 import StacksRouter from "./Stacks";
 
 const Router = () => <StacksRouter />;

@@ -1,5 +1,4 @@
-/* Components */
-import { AuthForm, Banner } from "../../components";
+import { AuthForm, Banner, GoBack } from "../../components";
 
 const Register = ({ navigation }) => {
   const handleSubmit = () => {
@@ -9,6 +8,7 @@ const Register = ({ navigation }) => {
   return (
     <>
       <Banner />
+      <GoBack />
 
       <AuthForm
         type={"Register"}

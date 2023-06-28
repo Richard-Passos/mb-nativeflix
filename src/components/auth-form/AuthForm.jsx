@@ -1,78 +1,37 @@
-/* Logic */
-import { useState, useRef } from "react";
-
-/* Components */
-import {
-  Container,
-  Title,
-  Text,
-  FormRow,
-  ExtraOptions,
-  Submit,
-  Footer,
-} from "./styles";
-import Label from "../label";
-import Input from "../input";
-import Checkbox from "../checkbox";
-import Link from "../link";
+import { useState } from "react";
+import { Container } from "./styles";
+import { Title, Row, Others, Buttons, Footer } from "./utils";
 
 const AuthForm = ({ type, handleRememberMe, handleSubmit }) => {
   const [name, setName] = useState(""),
     [email, setEmail] = useState(""),
     [password, setPassword] = useState("");
 
-  const refName = useRef(),
-    refEmail = useRef(),
-    refPassword = useRef();
-
   const isLoginType = type === "Login",
-    oppositeType = isLoginType ? "Register" : "Login";
+    opstType = isLoginType ? "Register" : "Login";
 
   return (
     <Container>
       <Title>{type}</Title>
 
-      {!isLoginType && formRow(refName, "Name", setName, "John Doe")}
-
-      {formRow(refEmail, "Email", setEmail, "example@email.com")}
-
-      {formRow(refPassword, "Password", setPassword, "********")}
-
-      {isLoginType && (
-        <ExtraOptions>
-          <Checkbox onPress={handleRememberMe}>Remember me</Checkbox>
-
-          <Link view="ForgotPassword">Forgot password?</Link>
-        </ExtraOptions>
+      {!isLoginType && (
+        <Row type="Name" setState={setName} placeholder="John Doe" />
       )}
 
-      <Submit onPress={() => handleSubmit(email, password, name)}>
-        {type}
-      </Submit>
+      <Row type="Email" setState={setEmail} placeholder="example@email.com" />
 
-      <Footer>
-        <Text>
-          {isLoginType ? "Don't have an account? " : "Already registered? "}
-        </Text>
+      <Row type="Password" setState={setPassword} placeholder="••••••••" />
 
-        <Link view={oppositeType}>{`${oppositeType}!`}</Link>
-      </Footer>
-    </Container>
-  );
-};
+      {isLoginType && <Others handleRememberMe={handleRememberMe} />}
 
-const formRow = (ref, type, setState, placeholder) => {
-  return (
-    <FormRow>
-      <Label forRef={ref}>{type}:</Label>
-
-      <Input
-        reactRef={ref}
-        placeholder={placeholder}
-        setState={setState}
-        isPassword={type === "Password"}
+      <Buttons
+        handleSubmit={handleSubmit}
+        states={[email, password, name]}
+        type={type}
       />
-    </FormRow>
+
+      <Footer isLoginType={isLoginType} opstType={opstType} />
+    </Container>
   );
 };
 

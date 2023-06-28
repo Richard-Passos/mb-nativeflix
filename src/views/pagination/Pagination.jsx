@@ -1,9 +1,7 @@
-/* Logic */
 import { useState, useEffect } from "react";
 import { mediasApi } from "../../assets/api";
 import { MEDIAS_KEY } from "@env";
 
-/* Components */
 import { GoBack, List } from "../../components";
 
 const Pagination = ({ route }) => {

@@ -1,7 +1,5 @@
-/* Logic */
 import styled from "styled-components/native";
 
-/* Components */
 import { FontText } from "../../utils";
 
 const Container = styled.TouchableOpacity`
@@ -12,9 +10,11 @@ const Container = styled.TouchableOpacity`
 
 const Text = styled(FontText)`
   margin-right: auto;
-  background-color: ${({ theme }) => theme.colors.bg};
-  color: ${({ theme }) => theme.colors.gray};
   padding-horizontal: 4px;
+
+  background-color: ${({ theme }) => theme.colors.bg};
+
+  color: ${({ theme }) => theme.colors.priText};
 `;
 
 export { Container, Text };

@@ -1,12 +1,10 @@
-/* Logic */
 import { useState, useEffect } from "react";
 import { mediasApi } from "../../assets/api";
 import { MEDIAS_KEY } from "@env";
 
-/* Components */
-import { Container, Types, Button, ViewAll, Title } from "./styles";
-import { View, FlatList } from "react-native";
-import { Card, Link } from "../../components";
+import { Container, Types, Button } from "./styles";
+import { View } from "react-native";
+import { Carousel, Card } from "../../components";
 
 const mediasToGet = [
   { type: "movie", section: "popular" },
@@ -45,40 +43,14 @@ const Home = () => {
 
       <View style={{ gap: 32 }}>
         {medias.map(({ type, section, content }, i) => (
-          <View key={type + section} style={{ gap: 16 }}>
-            <Title>
-              {`${
-                section[0].toUpperCase() + section.substr(1)
-              } ${type}s`.replace(/[-_]/g, " ")}
-            </Title>
-
-            <FlatList
-              horizontal
-              data={content}
-              style={{ marginHorizontal: 16 }}
-              renderItem={({ item }) => (
-                <Card
-                  media={item}
-                  styleVar={i === 0 ? "detailed" : "compact"}
-                />
-              )}
-              ItemSeparatorComponent={() => <View style={{ width: 16 }} />}
-              keyExtractor={(item) => item.id}
-              ListFooterComponent={
-                <ViewAll>
-                  <Link
-                    view={"Pagination"}
-                    params={{ type, section }}
-                    style={{ fontWeight: "bold" }}
-                    secondary
-                  >
-                    View all
-                  </Link>
-                </ViewAll>
-              }
-              ListFooterComponentStyle={{ alignSelf: "flex-end" }}
-            />
-          </View>
+          <Carousel
+            key={type + section + mediasType}
+            title={`${section[0].toUpperCase() + section.substr(1)} ${type}s`}
+            data={content}
+            renItem={(item) => card(item, i)}
+            keyExt={(item) => item.id}
+            params={{ type, section }}
+          />
         ))}
       </View>
 
@@ -104,5 +76,9 @@ const getMedias = (mediasToGet, mediasType, setMedias) => {
       )
   );
 };
+
+const card = (item, i) => (
+  <Card media={item} styleVar={i === 0 ? "detailed" : "compact"} />
+);
 
 export default Home;

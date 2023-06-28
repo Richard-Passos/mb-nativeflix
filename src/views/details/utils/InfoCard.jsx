@@ -1,16 +1,13 @@
-/* Logic */
 import { useContext } from "react";
 import { ThemeContext } from "styled-components/native";
-
-/* Components */
-import { Container, Title, Info, Gap } from "./styles";
+import { InfoContainer, InfoTitle, Gap, Info } from "./styles";
 import { Icon } from "react-native-elements";
 
 const InfoCard = ({ data }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <Container>
+    <InfoContainer>
       <Icon
         name={data.icon.name}
         type={data.icon.type}
@@ -20,11 +17,11 @@ const InfoCard = ({ data }) => {
       />
 
       <Gap>
-        <Title>{data.title}</Title>
+        <InfoTitle>{data.title}</InfoTitle>
 
         <Info>{data.info || ""}</Info>
       </Gap>
-    </Container>
+    </InfoContainer>
   );
 };
 

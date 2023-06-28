@@ -1,5 +1,4 @@
-/* Logic */
-import { opacify } from "polished";
+import { shade } from "polished";
 
 export default {
   title: "dark",
@@ -15,12 +14,14 @@ export default {
 
     priText: "hsl(240, 0%, 85%)",
     get secText() {
-      return `${opacify(-0.3, this.priText)}`;
+      return `${shade(0.25, this.priText)}`;
     },
 
     white: "hsl(220, 50%, 90%)",
     black: "hsl(220, 50%, 5%)",
-    gray: "hsl(220, 25%, 47%)",
+    get gray() {
+      return `${shade(0.25, this.secText)}`;
+    },
     red: "hsl(341, 100%, 50%)",
     yellow: "hsl(48, 85%, 50%)",
   },

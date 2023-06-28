@@ -1,11 +1,9 @@
-/* Logic */
 import { useState, useEffect } from "react";
 import { useDebounce } from "use-debounce";
 import { encode } from "url-encode-decode";
 import { mediasApi } from "../../assets/api";
 import { MEDIAS_KEY } from "@env";
 
-/* Components */
 import { InputSearch } from "./styles";
 import { Icon } from "react-native-elements";
 import { Input, List } from "../../components";

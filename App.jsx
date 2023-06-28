@@ -1,19 +1,15 @@
-/* Logic */
+import { useState } from "react";
 import { useFonts } from "expo-font";
-
-/* Components */
 import { ThemeProvider } from "styled-components/native";
 import { Container } from "./styles";
 import { StatusBar } from "expo-status-bar";
 import Router from "./src/routes";
-import { BottomNav } from "./src/components";
-import { useState } from "react";
+/* import { BottomNav } from "./src/components"; */
 
-/* Themes */
-import { darkTheme, lightTheme } from "./styles/themes";
+import { darkTheme } from "./styles/themes";
 
 const App = () => {
-  const [theme, setTheme] = useState(darkTheme);
+  const [theme] = useState(darkTheme);
 
   const [isFontsLoaded] = useFonts({
     Karla: require("./src/assets/fonts/Karla-VariableFont_wght.ttf"),

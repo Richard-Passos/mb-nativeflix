@@ -1,4 +1,3 @@
-/* Components */
 import { Banner, AuthForm } from "../../components";
 
 const Login = ({ navigation }) => {

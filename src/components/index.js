@@ -3,6 +3,7 @@ import Banner from "./banner";
 import BottomNav from "./bottom-nav";
 import Button from "./button";
 import Card from "./card";
+import Carousel from "./carousel";
 import Checkbox from "./checkbox";
 import Footer from "./footer";
 import GoBack from "./go-back";
@@ -19,6 +20,7 @@ export {
   BottomNav,
   Button,
   Card,
+  Carousel,
   Checkbox,
   Footer,
   GoBack,

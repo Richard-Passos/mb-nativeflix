@@ -1,51 +1,16 @@
-/* Logic */
-import { useState, useEffect, useContext } from "react";
-import { ThemeContext } from "styled-components";
+import { useState, useEffect } from "react";
 import { mediasApi } from "../../assets/api";
 import { MEDIAS_KEY } from "@env";
+import { ScrollView } from "react-native";
+import { GoBack } from "../../components";
+import { Hero } from "./styles";
+import { Text } from "./utils";
 import { IMG_ORIGIN_PATH, normalizeDate } from "../../utils";
-
-/* Components */
-import { ScrollView, FlatList } from "react-native";
-import { GoBack, Rating } from "../../components";
-import { Hero, Container, RatingContainer, Title, Overview } from "./styles";
-import { Icon } from "react-native-elements";
-import { InfoCard } from "./utils";
 
 const Details = ({ route }) => {
   const [details, setDetails] = useState(null);
 
-  const { backdropPath, rating, title, overview, runtime, releaseDate, genre } =
-    normalizeData(details);
-
-  const extraInfo = [
-    {
-      icon: {
-        name: "progress-clock",
-        type: "material-community",
-      },
-      title: "Duration",
-      info: runtime,
-    },
-    {
-      icon: {
-        name: "calendar-month",
-        type: "material-community",
-      },
-      title: "Release",
-      info: releaseDate,
-    },
-    {
-      icon: {
-        name: "drama-masks",
-        type: "material-community",
-      },
-      title: "Genre",
-      info: genre,
-    },
-  ];
-
-  const theme = useContext(ThemeContext);
+  const { backdropPath } = normalizeData(details);
 
   const { type, id } = route.params;
 
@@ -59,35 +24,7 @@ const Details = ({ route }) => {
 
       {details && <Hero source={{ uri: backdropPath }} resizeMode="cover" />}
 
-      {details && (
-        <Container>
-          <RatingContainer>
-            <Rating rating={rating} />
-
-            <Icon
-              name="heart"
-              type="font-awesome"
-              size={16}
-              color={theme.colors.red}
-            />
-          </RatingContainer>
-
-          <Title>{title}</Title>
-
-          {/* "\t" is replacing text-indent on css */}
-          <Overview>{"\t" + overview}</Overview>
-
-          {details && (
-            <FlatList
-              style={{ marginTop: 8 }}
-              data={extraInfo}
-              horizontal
-              renderItem={({ item }) => <InfoCard data={item} />}
-              keyExtractor={(item) => item.title}
-            />
-          )}
-        </Container>
-      )}
+      {details && <Text details={normalizeData(details)} />}
     </ScrollView>
   );
 };
