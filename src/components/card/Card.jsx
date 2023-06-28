@@ -8,15 +8,17 @@ import {
   TextContainer,
   Title,
   Center,
-  Date,
+  Small,
   Gap,
+  BG,
 } from "./styles";
 import Link from "../link";
 import Rating from "../rating";
 import Button from "../button";
-import { Icon } from "react-native-elements";
+import { View } from "react-native";
 
-const Card = ({ media, style }) => {
+/* StyleVar could be 'compact' or 'detailed' */
+const Card = ({ media, styleVar = "compact", style }) => {
   const { type, id, posterPath, title, rating, releaseDate } =
     normalizeData(media);
 
@@ -26,35 +28,32 @@ const Card = ({ media, style }) => {
   };
 
   return (
-    <Container key={id} style={style}>
+    <Container key={id} style={style} styleVar={styleVar}>
+      <BG />
       <Link {...link}>
-        <Image source={{ uri: posterPath }} resizeMode="cover" />
+        <Image
+          source={{ uri: posterPath }}
+          resizeMode="cover"
+          styleVar={styleVar}
+        />
       </Link>
 
-      <TextContainer>
-        <Gap>
-          <Title>{title}</Title>
+      {styleVar === "detailed" && (
+        <TextContainer>
+          <Gap>
+            <Title numberOfLines={1}>{title}</Title>
 
-          <Rating rating={rating} />
-        </Gap>
+            <Rating rating={rating} />
+          </Gap>
 
-        <Gap>
-          <Center>
-            <Date>{releaseDate}</Date>
-
-            <Icon
-              name="heart"
-              type="font-awesome"
-              size={16}
-              color="hsl(341, 100%, 50%)"
-            />
-          </Center>
+          {/* TODO: Add more info */}
+          {/* <Small>({releaseDate})</Small> */}
 
           <Link {...link}>
-            <Button style={{ pointerEvents: "none" }}>View</Button>
+            <Button containerStyle={{ pointerEvents: "none" }}>View</Button>
           </Link>
-        </Gap>
-      </TextContainer>
+        </TextContainer>
+      )}
     </Container>
   );
 };

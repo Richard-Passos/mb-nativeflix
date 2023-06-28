@@ -1,11 +1,9 @@
 /* Components */
-import { Container, Button } from "./styles";
+import { Container, Text } from "./styles";
 
 const Label = ({ forRef, children }) => (
-  <Container>
-    <Button onPress={() => forRef.current.focus()} clear>
-      {children}
-    </Button>
+  <Container onPress={() => forRef.current.focus()}>
+    <Text>{children}</Text>
   </Container>
 );
 

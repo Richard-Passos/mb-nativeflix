@@ -1,26 +1,31 @@
+/* Logic */
+import { useContext } from "react";
+import { ThemeContext } from "styled-components/native";
+
 /* Components */
-import { Container, Title, Info, Blur } from "./styles";
-import { View } from "react-native";
+import { Container, Title, Info, Gap } from "./styles";
 import { Icon } from "react-native-elements";
 
-const InfoCard = ({ data }) => (
-  <Container>
-    <Blur />
+const InfoCard = ({ data }) => {
+  const theme = useContext(ThemeContext);
 
-    <Icon
-      name={data.icon.name}
-      type={data.icon.type}
-      size={data.icon.size}
-      color={data.icon.color}
-      style={{ width: 32 }}
-    />
+  return (
+    <Container>
+      <Icon
+        name={data.icon.name}
+        type={data.icon.type}
+        size={32}
+        color={theme.colors.opstTheme}
+        style={{ width: 32 }}
+      />
 
-    <View style={{ gap: 4 }}>
-      <Title>{data.title}</Title>
+      <Gap>
+        <Title>{data.title}</Title>
 
-      <Info>{data.info || ""}</Info>
-    </View>
-  </Container>
-);
+        <Info>{data.info || ""}</Info>
+      </Gap>
+    </Container>
+  );
+};
 
 export default InfoCard;

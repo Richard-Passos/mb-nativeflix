@@ -1,20 +1,26 @@
+/* Logic */
+import { lighten } from "polished";
+
 export default {
-  title: "light",
+  title: "dark",
 
   colors: {
     primary: "hsl(341, 100%, 40%)",
-    primaryLighter: "hsl(341, 100%, 50%)",
+    primaryVar: "hsl(348, 72%, 30%)",
 
-    themeDarker: "hsl(0, 5%, 85%)",
-    theme: "hsl(0, 5%, 90%)",
-    themeLighter: "hsl(0, 5%, 95%)",
+    bg: "hsl(240, 60%, 93%)",
 
-    oppositeTheme: "hsl(240, 50%, 7%)",
+    theme: "hsl(240, 50%, 93%)",
+    opstTheme: "hsl(240, 50%, 7%)",
 
-    text: "hsl(240, 35%, 5%)",
+    priText: "hsl(240, 35%, 15%)",
+    get secText() {
+      return `${lighten(0.3, this.priText)}`;
+    },
 
-    dark: "hsl(220, 30%, 5%)",
-    light: "hsl(220, 30%, 95%)",
+    white: "hsl(220, 50%, 90%)",
+    black: "hsl(220, 50%, 5%)",
+    gray: "hsl(220, 25%, 47%)",
     red: "hsl(341, 100%, 50%)",
     yellow: "hsl(48, 85%, 50%)",
   },

@@ -15,7 +15,7 @@ import {
 
 const Stack = createNativeStackNavigator();
 
-const views = [Home, Login, Register, Details, Search, Pagination, Favorites];
+const views = [Register, Home, Login, Details, Search, Pagination, Favorites];
 
 const Stacks = () => (
   <NavigationContainer>

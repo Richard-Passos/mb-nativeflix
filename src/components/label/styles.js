@@ -2,10 +2,19 @@
 import styled from "styled-components/native";
 
 /* Components */
-import MyButton from "../button";
+import { FontText } from "../../utils";
 
-const Container = styled.View``;
+const Container = styled.TouchableOpacity`
+  left: 24px;
+  bottom: -8px;
+  z-index: 10;
+`;
 
-const Button = styled(MyButton)``;
+const Text = styled(FontText)`
+  margin-right: auto;
+  background-color: ${({ theme }) => theme.colors.bg};
+  color: ${({ theme }) => theme.colors.gray};
+  padding-horizontal: 4px;
+`;
 
-export { Container, Button };
+export { Container, Text };

@@ -8,33 +8,25 @@ import { FontText } from "../../../utils";
 const Container = styled.View`
   width: 125px;
   height: 150px;
-  margin: 0px 8px;
-  margin-bottom: 16px;
+  margin: 0px 8px 16px;
   padding: 20px;
-  border-radius: 16px;
-  overflow: hidden;
-
-  position: relative;
+  background-color: ${({ theme }) => opacify(-0.9, theme.colors.opstTheme)};
+  border-radius: ${({ theme }) => theme.sizes.md}px;
 
   justify-content: space-between;
 `;
 
-const Blur = styled.View`
-  width: 125px;
-  height: 150px;
-  background-color: ${({ theme }) => opacify(-0.9, theme.colors.light)};
-  filter: blur(24px);
-
-  position: absolute;
-`;
-
 const Title = styled(FontText)`
-  font-size: 11px;
-  color: ${({ theme }) => opacify(-0.3, theme.colors.text)};
+  font-size: ${({ theme }) => theme.sizes.sm}px;
+  color: ${({ theme }) => theme.colors.secText};
 `;
 
 const Info = styled(FontText)`
   font-weight: bold;
 `;
 
-export { Container, Blur, Title, Info };
+const Gap = styled.View`
+  gap: 4px;
+`;
+
+export { Container, Title, Info, Gap };

@@ -10,10 +10,10 @@ import { BottomNav } from "./src/components";
 import { useState } from "react";
 
 /* Themes */
-import { dark, light } from "./styles/themes";
+import { darkTheme, lightTheme } from "./styles/themes";
 
 const App = () => {
-  const [theme, setTheme] = useState(dark);
+  const [theme, setTheme] = useState(darkTheme);
 
   const [isFontsLoaded] = useFonts({
     Karla: require("./src/assets/fonts/Karla-VariableFont_wght.ttf"),
@@ -23,7 +23,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <StatusBar style="dark" />
+        <StatusBar style={theme.title === "dark" ? "light" : "dark"} />
 
         <Router />
 

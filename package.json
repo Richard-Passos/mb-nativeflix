@@ -30,12 +30,14 @@
     "react-native-webview": "11.26.0",
     "styled-components": "^5.3.10",
     "url-encode-decode": "^1.0.0",
-    "use-debounce": "^9.0.4"
+    "use-debounce": "^9.0.4",
+    "react-native-svg": "13.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "babel-plugin-styled-components": "^2.1.4",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.4"
+    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
+    "react-native-svg-transformer": "^1.0.0"
   },
   "private": true
 }

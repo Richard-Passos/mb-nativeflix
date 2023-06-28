@@ -1,5 +1,5 @@
 /* Components */
-import { AuthForm, Banner } from "../../components";
+import { Banner, AuthForm } from "../../components";
 
 const Login = ({ navigation }) => {
   const handleRememberMe = () => {

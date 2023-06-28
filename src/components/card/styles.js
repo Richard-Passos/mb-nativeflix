@@ -9,26 +9,36 @@ import { FontText } from "../../utils";
 const { width } = Dimensions.get("window");
 
 const Container = styled.View`
-  width: ${width * 0.9}px;
-  margin: 0px ${width * 0.05}px;
+  ${({ styleVar }) => styleVar === "detailed" && `width: ${width * 0.91}px`};
   margin-bottom: 16px;
-  border-radius: 16px;
-  overflow: hidden;
 
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+`;
+
+const BG = styled.View`
+  width: 100%;
+  height: 175px;
+  border-radius: ${({ theme }) => theme.sizes.md}px;
+  background-color: ${({ theme }) => theme.colors.theme};
+
+  position: absolute;
 `;
 
 const Image = styled.Image`
-  width: ${width * 0.4}px;
+  width: ${width * 0.35}px;
   height: 200px;
+  margin-horizontal: ${({ styleVar }) => (styleVar === "detailed" ? 16 : 0)}px;
+  margin-bottom: ${({ styleVar }) => (styleVar === "detailed" ? 16 : 0)}px;
+  border-radius: ${({ styleVar, theme }) =>
+    styleVar === "detailed" ? theme.sizes.xs : theme.sizes.md}px;
 `;
 
 const TextContainer = styled.View`
-  height: 200px;
-  padding: 16px;
-  background-color: hsl(240, 50%, 7%);
+  height: 175px;
+  padding-top: 12px;
+  padding-bottom: 16px;
+  padding-right: 16px;
 
   flex: 1;
   justify-content: space-between;
@@ -36,9 +46,9 @@ const TextContainer = styled.View`
 
 const Title = styled(FontText)``;
 
-const Date = styled(FontText)`
-  font-size: 12px;
-  color: ${({ theme }) => opacify(-0.15, theme.colors.light)};
+const Small = styled(FontText)`
+  font-size: ${({ theme }) => theme.sizes.sm}px;
+  color: ${({ theme }) => theme.colors.secText};
 `;
 
 const Center = styled.View`
@@ -48,7 +58,7 @@ const Center = styled.View`
 `;
 
 const Gap = styled.View`
-  gap: 16px;
+  gap: 8px;
 `;
 
-export { Container, Image, TextContainer, Title, Date, Center, Gap };
+export { Container, BG, Image, TextContainer, Title, Small, Center, Gap };

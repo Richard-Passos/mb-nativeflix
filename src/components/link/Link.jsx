@@ -5,13 +5,15 @@ import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity, View } from "react-native";
 import { Text } from "./styles";
 
-const Link = ({ view, params = {}, children, style }) => {
+const Link = ({ view, params = {}, children, style, secondary }) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate(view, params)}>
       {typeof children === "string" ? (
-        <Text style={style}>{children}</Text>
+        <Text style={style} secondary={secondary}>
+          {children}
+        </Text>
       ) : (
         <View style={style}>{children}</View>
       )}

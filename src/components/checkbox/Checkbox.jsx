@@ -1,11 +1,15 @@
 /* Logic */
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "styled-components/native";
 
 /* Components */
 import { Container, Box, Text } from "./styles";
+import { Icon } from "react-native-elements";
 
 const Checkbox = ({ onPress, children }) => {
   const [isChecked, setIsChecked] = useState(false);
+
+  const theme = useContext(ThemeContext);
 
   const handlePress = () => {
     onPress(isChecked);
@@ -19,7 +23,7 @@ const Checkbox = ({ onPress, children }) => {
           name="check"
           type="font-awesome"
           size={16}
-          color="hsl(235, 50%, 50%)"
+          color={theme.colors.primary}
         />
       </Box>
 

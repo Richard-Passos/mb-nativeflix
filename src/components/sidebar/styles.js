@@ -6,6 +6,6 @@ import { FontText } from "../../utils";
 
 const Container = styled.View``;
 
-const Text = styled(FontText);
+const Text = styled(FontText)``;
 
 export { Container, Text };

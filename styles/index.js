@@ -1,8 +1,8 @@
 /* Logic */
 import styled from "styled-components/native";
 
-const Container = styled.View`
-  background-color: ${({ theme }) => theme.colors.themeDarker};
+const Container = styled.SafeAreaView`
+  background-color: ${({ theme }) => theme.colors.bg};
 
   flex: 1;
   display: flex;

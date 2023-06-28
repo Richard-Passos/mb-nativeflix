@@ -9,10 +9,11 @@ const Text = styled(FontText)`
   background-color: ${({ clear, theme }) =>
     clear ? "transparent" : theme.colors.primary};
   color: ${({ clear, theme }) =>
-    clear ? theme.colors.primary : theme.colors.text};
+    clear ? theme.colors.primary : theme.colors.priText};
   border: 1px solid transparent;
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.sizes.xl}px;
   text-align: center;
+  font-weight: bold;
 `;
 
 export { Text };

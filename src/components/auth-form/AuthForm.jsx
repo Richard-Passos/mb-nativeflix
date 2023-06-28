@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 /* Components */
 import {
   Container,
-  Welcome,
+  Title,
   Text,
   FormRow,
   ExtraOptions,
@@ -28,34 +28,15 @@ const AuthForm = ({ type, handleRememberMe, handleSubmit }) => {
   const isLoginType = type === "Login",
     oppositeType = isLoginType ? "Register" : "Login";
 
-  const formRow = (type, placeholder) => {
-    /* Creating a variable name */
-    const createVarName = (str) => eval(str + type);
-
-    return (
-      <FormRow>
-        <Label forRef={createVarName("ref")}>{type}:</Label>
-
-        <Input
-          reactRef={createVarName("ref")}
-          placeholder={placeholder}
-          onChange={createVarName("set")}
-          isPassword={type === "Password"}
-        />
-      </FormRow>
-    );
-  };
-
   return (
     <Container>
-      <Welcome>Welcome{isLoginType ? " back" : ""}!</Welcome>
-      <Text>{type} your account!</Text>
+      <Title>{type}</Title>
 
-      {!isLoginType && formRow("Name", "John Doe")}
+      {!isLoginType && formRow(refName, "Name", setName, "John Doe")}
 
-      {formRow("Email", "example@email.com")}
+      {formRow(refEmail, "Email", setEmail, "example@email.com")}
 
-      {formRow("Password", "********")}
+      {formRow(refPassword, "Password", setPassword, "********")}
 
       {isLoginType && (
         <ExtraOptions>
@@ -71,11 +52,27 @@ const AuthForm = ({ type, handleRememberMe, handleSubmit }) => {
 
       <Footer>
         <Text>
-          {isLoginType ? "Already registered?" : "Don't have an account?"}{" "}
-          <Link view={oppositeType}>{`${oppositeType}!`}</Link>
+          {isLoginType ? "Don't have an account? " : "Already registered? "}
         </Text>
+
+        <Link view={oppositeType}>{`${oppositeType}!`}</Link>
       </Footer>
     </Container>
+  );
+};
+
+const formRow = (ref, type, setState, placeholder) => {
+  return (
+    <FormRow>
+      <Label forRef={ref}>{type}:</Label>
+
+      <Input
+        reactRef={ref}
+        placeholder={placeholder}
+        setState={setState}
+        isPassword={type === "Password"}
+      />
+    </FormRow>
   );
 };
 

@@ -23,6 +23,10 @@
     },
     "web": {
       "favicon": "./src/assets/images/favicon.svg"
+    },
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": ["js", "jsx", "svg"]
     }
   }
 }

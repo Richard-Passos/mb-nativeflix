@@ -1,11 +1,28 @@
 /* Logic */
+import { opacify } from "polished";
 import styled from "styled-components/native";
 
-/* Components */
-import { FontText } from "../../utils";
+const Container = styled.View`
+  width: 100%;
+  height: 200px;
 
-const Container = styled.View``;
+  justify-content: center;
+  align-items: center;
+`;
 
-const Text = styled(FontText);
+const Wrapper = styled.View`
+  width: 125px;
+  height: 125px;
+  background-color: ${({ theme }) => opacify(-0.75, theme.colors.black)};
+  border-radius: 125px;
 
-export { Container, Text };
+  justify-content: center;
+  align-items: center;
+`;
+
+const Image = styled.Image`
+  width: 100px;
+  height: 100px;
+`;
+
+export { Container, Wrapper, Image };

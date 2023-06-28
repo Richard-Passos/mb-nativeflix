@@ -5,18 +5,44 @@ import styled from "styled-components/native";
 import { FontText } from "../../utils";
 import Button from "../button";
 
-const Container = styled.View``;
+const Container = styled.View`
+  padding: 24px;
+  background-color: ${({ theme }) => theme.colors.bg};
+  border-top-left-radius: 75px;
 
-const Welcome = styled(FontText)``;
+  flex: 1;
+  gap: 24px;
+`;
 
-const Text = styled(FontText)``;
+const Title = styled(FontText)`
+  margin-vertical: 24px;
 
-const FormRow = styled.View``;
+  text-align: center;
+  font-size: ${({ theme }) => theme.sizes.xxl}px;
+  font-weight: bold;
+`;
 
-const ExtraOptions = styled.View``;
+const FormRow = styled.View`
+  margin-top: -14px;
+`;
 
-const Submit = styled(Button)``;
+const ExtraOptions = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
 
-const Footer = styled.View``;
+const Submit = styled(Button)`
+  padding: 12px;
+`;
 
-export { Container, Welcome, Text, FormRow, ExtraOptions, Submit, Footer };
+const Footer = styled.View`
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const Text = styled(FontText)`
+  color: ${({ theme }) => theme.colors.secText};
+`;
+
+export { Container, Title, Text, FormRow, ExtraOptions, Submit, Footer };

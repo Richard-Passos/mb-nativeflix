@@ -6,7 +6,7 @@ import { MEDIAS_KEY } from "@env";
 /* Components */
 import { Container, Types, Button, ViewAll, Title } from "./styles";
 import { View, FlatList } from "react-native";
-import { Card } from "../../components";
+import { Card, Link } from "../../components";
 
 const mediasToGet = [
   { type: "movie", section: "popular" },
@@ -44,7 +44,7 @@ const Home = () => {
       </Types>
 
       <View style={{ gap: 32 }}>
-        {medias.map(({ type, section, content }) => (
+        {medias.map(({ type, section, content }, i) => (
           <View key={type + section} style={{ gap: 16 }}>
             <Title>
               {`${
@@ -55,17 +55,35 @@ const Home = () => {
             <FlatList
               horizontal
               data={content}
-              renderItem={({ item }) => <Card media={item} />}
-              keyExtractor={(item) => item.id}
-              ListFooterComponent={() => (
-                <ViewAll view={"Pagination"} params={{ type, section }}>
-                  View all
-                </ViewAll>
+              style={{ marginHorizontal: 16 }}
+              renderItem={({ item }) => (
+                <Card
+                  media={item}
+                  styleVar={i === 0 ? "detailed" : "compact"}
+                />
               )}
+              ItemSeparatorComponent={() => <View style={{ width: 16 }} />}
+              keyExtractor={(item) => item.id}
+              ListFooterComponent={
+                <ViewAll>
+                  <Link
+                    view={"Pagination"}
+                    params={{ type, section }}
+                    style={{ fontWeight: "bold" }}
+                    secondary
+                  >
+                    View all
+                  </Link>
+                </ViewAll>
+              }
+              ListFooterComponentStyle={{ alignSelf: "flex-end" }}
             />
           </View>
         ))}
       </View>
+
+      {/* Adding space on bottom page */}
+      <View style={{ height: 32 }} />
     </Container>
   );
 };
