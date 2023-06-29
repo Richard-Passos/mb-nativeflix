@@ -10,7 +10,7 @@ const Container = styled.TouchableOpacity`
   background-color: ${({ theme }) => opacify(-0.25, theme.colors.bg)};
 
   position: absolute;
-  top: 32px;
+  top: 8px;
   left: 8px;
   z-index: 10;
 

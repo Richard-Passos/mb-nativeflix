@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { mediasApi } from "../../assets/api";
-import { MEDIAS_KEY } from "@env";
-
+import { mediasApi, MEDIAS_KEY } from "../../assets/api";
 import { GoBack, List } from "../../components";
 
 const Pagination = ({ route }) => {
@@ -11,7 +9,7 @@ const Pagination = ({ route }) => {
   const { type, section } = route.params;
 
   useEffect(() => {
-    getMedias(type, section, page, setMedias, setMedias);
+    getMedias(type, section, page, setMedias);
   }, [page]);
 
   return (

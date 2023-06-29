@@ -5,10 +5,6 @@ const Login = ({ navigation }) => {
     console.log("Remember me - working");
   };
 
-  const handleForgotPass = () => {
-    console.log("Forgot password - working");
-  };
-
   const handleSubmit = () => {
     navigation.navigate("Home");
   };
@@ -20,7 +16,6 @@ const Login = ({ navigation }) => {
       <AuthForm
         type={"Login"}
         handleRememberMe={handleRememberMe}
-        handleForgotPass={handleForgotPass}
         handleSubmit={handleSubmit}
         navigation={navigation}
       />

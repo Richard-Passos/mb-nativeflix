@@ -16,7 +16,7 @@ const Rating = ({ rating }) => {
           name="star"
           type="font-awesome"
           size={16}
-          color={i + 1 <= rating ? theme.colors.yellow : theme.colors.bg}
+          color={i + 1 <= rating ? theme.colors.yellow : theme.colors.dark}
         />
       ))}
     </Stars>

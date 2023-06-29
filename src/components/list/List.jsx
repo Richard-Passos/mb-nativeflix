@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { FlatList } from "./styles";
+import { FlatList, Text } from "./styles";
 import Card from "../card";
 import { View } from "react-native";
 
@@ -11,7 +11,7 @@ const List = ({ data, setPage /* hasChanged */ }) => {
   );
   const onEndReached = () => setPage((prevState) => ++prevState);
 
-  return (
+  return memoData.length ? (
     <FlatList
       data={memoData}
       renderItem={renderItem}
@@ -19,9 +19,11 @@ const List = ({ data, setPage /* hasChanged */ }) => {
       onEndReached={onEndReached}
       onEndReachedThreshold={0.4}
       /* Adding space on bottom page */
-      ListFooterComponent={<View style={{ height: 32 }} />}
+      ListFooterComponent={<View style={{ height: 16 }} />}
       /* TODO - extraData={hasChanged} */
     />
+  ) : (
+    <Text>"None media matched your query."</Text>
   );
 };
 

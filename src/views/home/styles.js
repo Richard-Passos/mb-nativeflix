@@ -1,28 +1,19 @@
 import styled from "styled-components/native";
-import { opacify } from "polished";
 
-import { Button as Btn } from "../../components";
-
-import { FontText, viewWidth } from "../../utils";
+const paddingTop = 16;
 
 const Container = styled.ScrollView`
+  padding-top: ${paddingTop}px;
+
   background-color: ${({ theme }) => theme.colors.bg};
 `;
 
-const Types = styled.View`
-  padding-top: 16px;
-  padding-bottom: 24px;
-
-  flex-direction: row;
-  justify-content: space-evenly;
+const Gap = styled.View`
+  gap: 28px;
 `;
 
-const Button = styled(Btn)`
-  color: ${({ isActive, theme }) =>
-    isActive ? theme.colors.primary : theme.colors.priText};
-  border-bottom-color: ${({ isActive, theme }) =>
-    isActive ? theme.colors.primary : "transparent"};
-  border-radius: 0px;
+const SpaceOnBottomPage = styled.View`
+  height: ${paddingTop * 2}px;
 `;
 
-export { Container, Types, Button };
+export { Container, Gap, SpaceOnBottomPage };

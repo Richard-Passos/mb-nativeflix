@@ -5,7 +5,6 @@ import { Container } from "./styles";
 import { StatusBar } from "expo-status-bar";
 import Router from "./src/routes";
 /* import { BottomNav } from "./src/components"; */
-
 import { darkTheme } from "./styles/themes";
 
 const App = () => {

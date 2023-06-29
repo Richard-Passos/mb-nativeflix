@@ -1,4 +1,4 @@
+import Info from "./Info";
 import InfoCard from "./InfoCard";
-import Text from "./Text";
 
-export { InfoCard, Text };
+export { Info, InfoCard };

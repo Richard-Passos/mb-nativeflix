@@ -3,7 +3,7 @@ import Rating from "../../rating";
 import Link from "../../link";
 
 const Info = ({ media, link }) => {
-  const { title, rating, overview } = normalizeData(media);
+  const { title, rating, overview } = normData(media);
 
   return (
     <>
@@ -24,10 +24,10 @@ const Info = ({ media, link }) => {
   );
 };
 
-const normalizeData = ({ title, name, vote_average, overview }) => ({
-  title: title ?? name,
+const normData = ({ title, name, vote_average, overview }) => ({
+  title: title || name,
   rating: Math.ceil(vote_average / 2) || 0,
-  overview,
+  overview: overview || "Overview not found!",
 });
 
 export default Info;

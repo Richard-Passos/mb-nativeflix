@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
-import { mediasApi } from "../../assets/api";
-import { MEDIAS_KEY } from "@env";
-
-import { Container, Types, Button } from "./styles";
-import { View } from "react-native";
+import { mediasApi, MEDIAS_KEY } from "../../assets/api";
+import { Container, Gap, SpaceOnBottomPage } from "./styles";
 import { Carousel, Card } from "../../components";
 
 const mediasToGet = [
@@ -15,57 +12,37 @@ const mediasToGet = [
 ];
 
 const Home = () => {
-  const [medias, setMedias] = useState([]),
-    [mediasType, setMediasType] = useState("Multi");
-
-  const types = ["Multi", "Movie", "Tv"];
+  const [medias, setMedias] = useState([]);
 
   useEffect(() => {
     setMedias([]);
 
-    getMedias(mediasToGet, mediasType, setMedias);
-  }, [mediasType]);
+    getMedias(setMedias);
+  }, []);
 
   return (
     <Container>
-      <Types>
-        {types.map((text) => (
-          <Button
-            key={text}
-            onPress={() => setMediasType(text)}
-            clear
-            isActive={text === mediasType}
-          >
-            {text}
-          </Button>
-        ))}
-      </Types>
-
-      <View style={{ gap: 32 }}>
-        {medias.map(({ type, section, content }, i) => (
+      <Gap>
+        {medias.map(({ type, section, content }) => (
           <Carousel
-            key={type + section + mediasType}
+            key={type + section}
             title={`${section[0].toUpperCase() + section.substr(1)} ${type}s`}
             data={content}
-            renItem={(item) => card(item, i)}
+            renItem={(item) => card(item, section)}
             keyExt={(item) => item.id}
             params={{ type, section }}
+            titleStyle={section === "popular" && { fontSize: 28 }}
           />
         ))}
-      </View>
+      </Gap>
 
-      {/* Adding space on bottom page */}
-      <View style={{ height: 32 }} />
+      <SpaceOnBottomPage />
     </Container>
   );
 };
 
-const getMedias = (mediasToGet, mediasType, setMedias) => {
-  const requests = mediasToGet.filter(({ type }) =>
-    mediasType === "Multi" ? true : type === mediasType.toLowerCase()
-  );
-
-  requests.forEach(({ type, section }) =>
+const getMedias = (setMedias) =>
+  mediasToGet.forEach(({ type, section }) =>
     mediasApi
       .get(`${type}/${section}?api_key=${MEDIAS_KEY}&language=en-US`)
       .then(({ data }) =>
@@ -75,10 +52,12 @@ const getMedias = (mediasToGet, mediasType, setMedias) => {
         ])
       )
   );
-};
 
-const card = (item, i) => (
-  <Card media={item} styleVar={i === 0 ? "detailed" : "compact"} />
+const card = (item, section) => (
+  <Card
+    media={item}
+    styleVar={section === "popular" ? "detailed" : "compact"}
+  />
 );
 
 export default Home;

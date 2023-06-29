@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDebounce } from "use-debounce";
 import { encode } from "url-encode-decode";
-import { mediasApi } from "../../assets/api";
-import { MEDIAS_KEY } from "@env";
-
-import { InputSearch } from "./styles";
-import { Icon } from "react-native-elements";
-import { Input, List } from "../../components";
+import { mediasApi, MEDIAS_KEY } from "../../assets/api";
+import { InputSearch } from "./utils";
+import { List } from "../../components";
 
 const Search = () => {
   const [medias, setMedias] = useState([]),
@@ -21,34 +18,35 @@ const Search = () => {
   };
 
   useEffect(() => {
-    getMedias(debouncedSearch, 1).then(({ data }) => setMedias(data.results));
+    getMedias(debouncedSearch, 1, "restart", setMedias);
   }, [debouncedSearch]);
 
   useEffect(() => {
-    getMedias(debouncedSearch, page).then(({ data }) =>
-      setMedias((prevState) => [...prevState, ...data.results])
-    );
+    /* Infinity scroll */
+    getMedias(debouncedSearch, page, "add", setMedias);
   }, [page]);
 
   return (
     <>
-      <InputSearch>
-        <Icon name="search" type="font-awesome" size={16} />
-        <Input placeholder="Media title" onChange={handleSearch} />
-        <Icon name="x" type="font-awesome" size={13} />
-      </InputSearch>
+      <InputSearch handleSearch={handleSearch} />
 
       <List data={medias} setPage={setPage} />
     </>
   );
 };
 
-const getMedias = (query, page) => {
+const getMedias = (query, page, type, setMedias) => {
   const encondedQuery = encode(query);
 
-  return mediasApi.get(
-    `search/multi?api_key=${MEDIAS_KEY}&language=en-US&page=${page}&query=${encondedQuery}`
-  );
+  mediasApi
+    .get(
+      `search/multi?api_key=${MEDIAS_KEY}&language=en-US&page=${page}&query=${encondedQuery}`
+    )
+    .then(({ data }) =>
+      type === "restart"
+        ? setMedias(data.results)
+        : setMedias((prevState) => [...prevState, ...data.results])
+    );
 };
 
 export default Search;

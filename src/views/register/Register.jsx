@@ -1,4 +1,4 @@
-import { AuthForm, Banner, GoBack } from "../../components";
+import { Banner, GoBack, AuthForm } from "../../components";
 
 const Register = ({ navigation }) => {
   const handleSubmit = () => {

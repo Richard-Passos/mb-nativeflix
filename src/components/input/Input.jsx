@@ -3,7 +3,9 @@ import { ThemeContext } from "styled-components/native";
 import { Container, TextInput, IconContainer } from "./styles";
 import { Icon } from "react-native-elements";
 
-const Input = ({ reactRef, setState, isPassword = false, placeholder }) => {
+const Input = (props) => {
+  const { reactRef, setState, isPassword = false, placeholder, style } = props;
+
   const [isVisible, setIsVisible] = useState(false);
 
   const theme = useContext(ThemeContext);
@@ -17,6 +19,7 @@ const Input = ({ reactRef, setState, isPassword = false, placeholder }) => {
         placeholder={placeholder}
         placeholderTextColor={theme.colors.gray}
         cursorColor={theme.colors.gray}
+        style={style}
       />
 
       {isPassword && (

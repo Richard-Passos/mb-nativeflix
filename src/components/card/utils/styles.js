@@ -7,7 +7,7 @@ const Container = styled.View`
   padding: 16px;
 
   flex: 1;
-  justify-content: space-between;
+  gap: 16px;
 `;
 
 const Title = styled(FontText)``;

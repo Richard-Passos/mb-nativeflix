@@ -1,3 +1,3 @@
-import mediasApi from "./medias";
+import mediasApi, { MEDIAS_KEY } from "./medias";
 
-export { mediasApi };
+export { mediasApi, MEDIAS_KEY };

@@ -1,27 +1,29 @@
 import { useContext } from "react";
 import { ThemeContext } from "styled-components/native";
-import { InfoContainer, InfoTitle, Gap, Info } from "./styles";
+import { CardCon, Gap, Text, CardText } from "./styles";
 import { Icon } from "react-native-elements";
 
 const InfoCard = ({ data }) => {
+  const { icon, title, text } = data;
+
   const theme = useContext(ThemeContext);
 
   return (
-    <InfoContainer>
+    <CardCon>
       <Icon
-        name={data.icon.name}
-        type={data.icon.type}
+        name={icon.name}
+        type={icon.type}
         size={32}
         color={theme.colors.opstTheme}
-        style={{ width: 32 }}
+        style={{ marginRight: "auto" }}
       />
 
       <Gap>
-        <InfoTitle>{data.title}</InfoTitle>
+        <Text>{title}</Text>
 
-        <Info>{data.info || ""}</Info>
+        <CardText>{text || "Not found"}</CardText>
       </Gap>
-    </InfoContainer>
+    </CardCon>
   );
 };
 

@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
-import { mediasApi } from "../../assets/api";
-import { MEDIAS_KEY } from "@env";
+import { mediasApi, MEDIAS_KEY } from "../../assets/api";
 import { ScrollView } from "react-native";
 import { GoBack } from "../../components";
 import { Hero } from "./styles";
-import { Text } from "./utils";
-import { IMG_ORIGIN_PATH, normalizeDate } from "../../utils";
+import { Info } from "./utils";
+import { normIMGPath, normRuntime, normDate } from "../../utils";
 
 const Details = ({ route }) => {
   const [details, setDetails] = useState(null);
 
-  const { backdropPath } = normalizeData(details);
+  const normDetails = normData(details);
 
   const { type, id } = route.params;
 
@@ -22,9 +21,13 @@ const Details = ({ route }) => {
     <ScrollView>
       <GoBack />
 
-      {details && <Hero source={{ uri: backdropPath }} resizeMode="cover" />}
+      {details && (
+        <>
+          <Hero source={normDetails.backdropPath} resizeMode="cover" />
 
-      {details && <Text details={normalizeData(details)} />}
+          <Info details={normDetails} />
+        </>
+      )}
     </ScrollView>
   );
 };
@@ -34,36 +37,23 @@ const getDetails = async (type, id, setDetails) =>
     .get(`${type}/${id}?api_key=${MEDIAS_KEY}&language=en-US`)
     .then(({ data }) => setDetails(data));
 
-const normalizeData = (details) => {
+const normData = (details) => {
   if (details) {
-    const {
-      backdrop_path,
-      vote_average,
-      name,
-      title,
-      overview,
-      episode_run_time,
-      first_air_date,
-      release_date,
-      genres,
-    } = details;
+    /* From movies */
+    const { vote_average, title, release_date } = details;
+    /* From tvs */
+    const { name, episode_run_time, first_air_date } = details;
+    /* From both */
+    const { runtime, backdrop_path, overview, genres } = details;
 
-    let { runtime = episode_run_time[0] } = details;
-
-    /* Get format hours/minutes or minutes */
-    const runtimeHour = Math.trunc(runtime / 60);
-    runtime =
-      runtime >= 60
-        ? `${runtimeHour}h ${runtime - runtimeHour * 60}m`
-        : `${runtime}m`;
-
+    /* Normalizing and returning */
     return {
-      backdropPath: IMG_ORIGIN_PATH + backdrop_path,
+      backdropPath: normIMGPath(backdrop_path),
       rating: Math.ceil(vote_average / 2) || 0,
       title: title || name,
-      overview: overview,
-      runtime,
-      releaseDate: normalizeDate(release_date || first_air_date),
+      overview: overview || "Overview not found!",
+      runtime: normRuntime(runtime || episode_run_time[0]),
+      releaseDate: normDate(release_date || first_air_date),
       genre: genres[0].name,
     };
   }

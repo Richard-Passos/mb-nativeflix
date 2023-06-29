@@ -3,10 +3,10 @@ import styled from "styled-components/native";
 import { viewWidth } from "../../utils";
 
 const Container = styled.View`
-  ${({ styleVar }) =>
-    styleVar === "detailed" && `width: ${viewWidth * 0.91}px`};
+  width: ${({ styleVar }) =>
+    styleVar === "detailed" ? `${viewWidth * 0.91}px` : "auto"};
 
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 
   flex-direction: row;
   align-items: flex-end;
@@ -14,12 +14,16 @@ const Container = styled.View`
 
 const Image = styled.Image`
   width: ${viewWidth * 0.35}px;
-  height: 200px;
+  height: ${viewWidth * 0.5}px;
 
   margin-bottom: ${({ styleVar }) => (styleVar === "detailed" ? 16 : 0)}px;
   margin-left: ${({ styleVar }) => (styleVar === "detailed" ? 16 : 0)}px;
+  border-width: 1px;
+  border-color: ${({ theme }) => theme.colors.bg};
   border-radius: ${({ styleVar, theme }) =>
     styleVar === "detailed" ? theme.sizes.xs : theme.sizes.md}px;
+
+  background-color: ${({ theme }) => theme.colors.theme};
 `;
 
 export { Container, Image };
