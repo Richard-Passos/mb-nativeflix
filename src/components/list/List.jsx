@@ -3,7 +3,7 @@ import { FlatList, Text } from "./styles";
 import Card from "../card";
 import { View } from "react-native";
 
-const List = ({ data, setPage /* hasChanged */ }) => {
+const List = ({ data, setPage }) => {
   const memoData = useMemo(() => data, [data]);
 
   const renderItem = ({ item }) => (
@@ -20,7 +20,7 @@ const List = ({ data, setPage /* hasChanged */ }) => {
       onEndReachedThreshold={0.4}
       /* Adding space on bottom page */
       ListFooterComponent={<View style={{ height: 16 }} />}
-      /* TODO - extraData={hasChanged} */
+      contentContainerStyle={{ alignItems: "center" }}
     />
   ) : (
     <Text>"None media matched your query."</Text>

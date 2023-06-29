@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 import { FontText } from "../../utils";
 
 const FlatList = styled.FlatList`
-  padding: 16px;
+  padding-vertical: 16px;
 
   background-color: ${({ theme }) => theme.colors.bg};
 
