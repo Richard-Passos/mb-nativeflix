@@ -5,11 +5,13 @@ Desafio Fullture: criando um app de listagem de mídias com React Native. Aplica
 
 Recursos Principais:
 
-1- Página Inicial (Home): Oferecendo uma visualização geral das mídias disponíveis. Os usuários podem explorar e escolher entre ver todos os tipos de mídias, somente filmes ou somente séries. Essa página fornece uma visão geral dos títulos disponíveis e atrai os usuários para explorar mais detalhes.
+1- Páginas Auth (Login e Register): Sendo disponível somente a estilização inicial de ambas.
 
-2- Página de Detalhes (Details): Ao selecionar uma mídia específica na página inicial, os usuários são direcionados a esta página para obter informações detalhadas sobre a mídia selecionada. Essa página é gerada dinamicamente através de parâmetros fornecidos pelo react-navigation, garantindo uma experiência personalizada para cada título selecionado.
+2- Página Inicial (Home): Oferecendo uma visualização geral das mídias disponíveis. Os usuários podem explorar e escolher entre ver todos os tipos de mídias, somente filmes ou somente séries. Essa página fornece uma visão geral dos títulos disponíveis e atrai os usuários para explorar mais detalhes.
 
-3- Página de Listagem Ampla (Pagination): Essa página permite que os usuários naveguem por uma listagem mais ampla de mídias, aplicando um recurso de scroll infinito. Isso garante que os usuários possam descobrir e explorar uma grande quantidade de títulos de forma contínua, sem limitações de páginação tradicionais.
+3- Página de Detalhes (Details): Ao selecionar uma mídia específica na página inicial, os usuários são direcionados a esta página para obter informações detalhadas sobre a mídia selecionada. Essa página é gerada dinamicamente através de parâmetros fornecidos pelo react-navigation, garantindo uma experiência personalizada para cada título selecionado.
+
+4- Página de Listagem Ampla (Pagination): Essa página permite que os usuários naveguem por uma listagem mais ampla de mídias, aplicando um recurso de scroll infinito. Isso garante que os usuários possam descobrir e explorar uma grande quantidade de títulos de forma contínua, sem limitações de páginação tradicionais.
 
 TODO:
 - Página de login e register
