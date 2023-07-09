@@ -11,7 +11,7 @@ const Search = () => {
     [page, setPage] = useState(1),
     [loading, setLoading] = useState(false);
 
-  const [debouncedSearch] = useDebounce(search, 250);
+  const [debouncedSearch] = useDebounce(search, 500);
 
   const _getMediasparams = [debouncedSearch, page, setMedias, setLoading];
 
