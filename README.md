@@ -3,6 +3,12 @@
 ## :memo: Descrição
 Desafio Fullture: criando um app de listagem de mídias com React Native. Aplicativo desenvolvido com o objetivo de fornecer uma experiência aprimorada na listagem de mídias de um banco de dados utilizando a API do TMDB. Com o uso do react-navigation para uma navegação suave entre páginas e do StyleSheet para uma estilização elegante, proporcionando uma experiência de usuário atraente e intuitiva.
 
+Demo: 
+
+[![Watch the video](![image](https://github.com/Richard-Passos/nativeflix/assets/104469731/5fa8aaa4-8360-4253-af85-320618696f1b)
+)](https://youtu.be/vt5fpE0bzSY)
+
+
 Recursos Principais:
 
 1- Páginas Auth (Login e Register): Podendo logar ou registrar um usuário, podendo também lidar com erros, troca de senha e persitir os dados de login.
@@ -51,12 +57,12 @@ MEDIAS_KEY=SUA_API_KEY
 ```
 7º - Ainda no arquivi .env, colocar os seus dados de configuração do firebase seguindo o modelo do arquivo .env.example
 ```
-AUTH_KEY=apiKey
-AUTH_DOMAIN=authDomain
-AUTH_PROJECT_ID=projectId
-AUTH_STORAGE_BUCKET=storageBucket
-AUTH_MESSAGING_SENDER_ID=messagingSenderId
-AUTH_APP_ID=appId
+AUTH_KEY=SUA_FIREBASE_API_KEY
+AUTH_DOMAIN=SUA_FIREBASE_AUTH_DOMAIN
+AUTH_PROJECT_ID=SUA_FIREBASE_PROJECT_ID
+AUTH_STORAGE_BUCKET=SUA_FIREBASE_STORAGE_BUCKET
+AUTH_MESSAGING_SENDER_ID=SUA_FIREBASE_MESSAGING_SENDER_ID
+AUTH_APP_ID=SUA_FIREBASE_APP_ID
 ```
 8º - Rodar projeto com expo
 ```
