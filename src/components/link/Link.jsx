@@ -1,21 +1,30 @@
 import { useNavigation } from "@react-navigation/native";
+import { withTheme, Text } from "react-native-paper";
 import { TouchableOpacity, View } from "react-native";
-import { Text } from "./styles";
 
-const Link = ({ view, params = {}, children, secondary, style }) => {
+const Link = (props) => {
+  const { view, params, children, secondary, theme, style } = props;
+
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate(view, params)}>
       {typeof children === "string" ? (
-        <Text secondary={secondary} style={style}>
+        <Text
+          style={{
+            ...(secondary
+              ? { fontWeight: "bold" }
+              : { color: theme.colors.primary }),
+            ...style,
+          }}
+        >
           {children}
         </Text>
       ) : (
-        <View style={style}>{children}</View>
+        <View>{children}</View>
       )}
     </TouchableOpacity>
   );
 };
 
-export default Link;
+export default withTheme(Link);

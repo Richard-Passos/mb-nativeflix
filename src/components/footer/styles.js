@@ -1,8 +1,15 @@
-import styled from "styled-components/native";
-import { FontText } from "../../utils";
+import { StyleSheet } from "react-native";
 
-const Container = styled.View``;
+export default StyleSheet.create({
+  container: {
+    borderWidth: 1,
+    padding: 16,
 
-const Text = styled(FontText)``;
-
-export { Container, Text };
+    alignItems: "center",
+    gap: 24,
+  },
+  icons: {
+    flexDirection: "row",
+    gap: 24,
+  },
+});

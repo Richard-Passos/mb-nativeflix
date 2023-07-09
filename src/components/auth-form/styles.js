@@ -1,13 +1,18 @@
-import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
+import { viewHeight } from "../../utils";
 
-const Container = styled.View`
-  border-top-left-radius: 75px;
-  padding: 24px;
+export default StyleSheet.create({
+  form: {
+    height: viewHeight,
 
-  background-color: ${({ theme }) => theme.colors.bg};
+    padding: 32,
 
-  flex: 1;
-  gap: 24px;
-`;
-
-export { Container };
+    justifyContent: "center",
+    gap: 32,
+  },
+  bgImage: {
+    position: "absolute",
+    bottom: 0,
+    zIndex: -10,
+  },
+});

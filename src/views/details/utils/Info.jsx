@@ -1,35 +1,32 @@
-import { useState, useContext } from "react";
-import { ThemeContext } from "styled-components";
-import { Container, Row, Title, Text, Trailer } from "./styles.js";
+import { withTheme, Text } from "react-native-paper";
+import { View } from "react-native";
 import { Rating, Carousel } from "../../../components";
-import { Icon } from "react-native-elements";
-import InfoCard from "./InfoCard.jsx";
+import InfoCard from "./InfoCard";
+import Trailer from "./Trailer";
+import styles from "./styles";
 
-const Info = ({ details }) => {
-  const [isPlay, setIsPlay] = useState(false);
-
+const Info = ({ details, theme, trailer }) => {
   const { runtime, releaseDate, genre, rating, title, overview } = details,
     extraInfo = getExtraInfo(runtime, releaseDate, genre);
 
-  const theme = useContext(ThemeContext);
-
   return (
-    <Container>
-      <Row>
+    <View
+      style={{ ...styles.infoCon, backgroundColor: theme.colors.background }}
+    >
+      <View style={{ gap: 8 }}>
+        <Text style={{ fontWeight: "bold" }} variant="titleLarge">
+          {title}
+        </Text>
+
         <Rating rating={rating} />
+      </View>
 
-        <Icon
-          name="heart"
-          type="font-awesome"
-          size={16}
-          color={theme.colors.red}
-        />
-      </Row>
-
-      <Title>{title}</Title>
-
-      {/* "\t" is replacing text-indent on css */}
-      <Text>{"\t" + overview}</Text>
+      <Text
+        style={{ lineHeight: 18, color: theme.colors.onBackground }}
+        variant="labelSmall"
+      >
+        {"\t" + overview}
+      </Text>
 
       {details && (
         <Carousel
@@ -37,14 +34,12 @@ const Info = ({ details }) => {
           data={extraInfo}
           renItem={infoCard}
           keyExt={(item) => item.title}
-          style={{ marginHorizontal: 0, marginTop: -32 }}
+          style={styles.carousel}
         />
       )}
 
-      <Trailer onPress={() => setIsPlay((prevState) => !prevState)}>
-        {!isPlay ? "Play" : "Pause"} Trailer
-      </Trailer>
-    </Container>
+      <Trailer trailer={trailer} />
+    </View>
   );
 };
 
@@ -52,29 +47,20 @@ const infoCard = (item) => <InfoCard data={item} />;
 
 const getExtraInfo = (runtime, releaseDate, genre) => [
   {
-    icon: {
-      name: "progress-clock",
-      type: "material-community",
-    },
+    iconName: "progress-clock",
     title: "Duration",
     text: runtime,
   },
   {
-    icon: {
-      name: "calendar-month",
-      type: "material-community",
-    },
+    iconName: "calendar-month",
     title: "Release",
     text: releaseDate,
   },
   {
-    icon: {
-      name: "drama-masks",
-      type: "material-community",
-    },
+    iconName: "drama-masks",
     title: "Genre",
     text: genre,
   },
 ];
 
-export default Info;
+export default withTheme(Info);

@@ -14,7 +14,11 @@ module.exports = function (api) {
           allowUndefined: true,
         },
       ],
-      ["babel-plugin-styled-components", { ssr: false }],
     ],
+    env: {
+      production: {
+        plugins: ["react-native-paper/babel"],
+      },
+    },
   };
 };

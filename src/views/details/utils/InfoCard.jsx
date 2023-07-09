@@ -1,30 +1,29 @@
-import { useContext } from "react";
-import { ThemeContext } from "styled-components/native";
-import { CardCon, Gap, Text, CardText } from "./styles";
-import { Icon } from "react-native-elements";
+import { withTheme, IconButton, Text } from "react-native-paper";
+import { View } from "react-native";
+import styles from "./styles";
+import { opacify } from "polished";
 
-const InfoCard = ({ data }) => {
-  const { icon, title, text } = data;
-
-  const theme = useContext(ThemeContext);
+const InfoCard = ({ data, theme }) => {
+  const { iconName, title, text } = data;
 
   return (
-    <CardCon>
-      <Icon
-        name={icon.name}
-        type={icon.type}
-        size={32}
-        color={theme.colors.opstTheme}
-        style={{ marginRight: "auto" }}
-      />
+    <View
+      style={{
+        ...styles.cardCon,
+        backgroundColor: opacify(-0.9, theme.colors.onSurface),
+      }}
+    >
+      <IconButton icon={iconName} size={32} style={{ margin: -10 }} />
 
-      <Gap>
-        <Text>{title}</Text>
+      <View style={{ gap: 2 }}>
+        <Text style={{ color: theme.colors.onBackground }} variant="labelSmall">
+          {title}
+        </Text>
 
-        <CardText>{text || "Not found"}</CardText>
-      </Gap>
-    </CardCon>
+        <Text style={{ fontWeight: "bold" }}>{text || "Not found"}</Text>
+      </View>
+    </View>
   );
 };
 
-export default InfoCard;
+export default withTheme(InfoCard);

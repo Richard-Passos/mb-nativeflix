@@ -1,14 +1,10 @@
-import styled from "styled-components/native";
-import { FontText } from "../../utils";
+import { StyleSheet } from "react-native";
 
-const FlatList = styled.FlatList`
-  padding-vertical: 16px;
+export default StyleSheet.create({
+  container: {
+    paddingVertical: 20,
 
-  background-color: ${({ theme }) => theme.colors.bg};
-
-  flex: 1;
-`;
-
-const Text = styled(FontText)``;
-
-export { FlatList, Text };
+    flex: 1,
+    alignItems: "center",
+  },
+});

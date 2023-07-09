@@ -1,26 +1,26 @@
-import { Banner, AuthForm } from "../../components";
+import { login } from "../../assets/api";
+import { AuthForm } from "../../components";
 
-const Login = ({ navigation }) => {
-  const handleRememberMe = () => {
-    console.log("Remember me - working");
-  };
+const Login = () => {
+  const handleSubmit = (email, password, _, persist, clearInputs, setError) =>
+    login(persist, email, password)
+      .then(clearInputs)
+      .catch((err) => setError(getError(err.code)));
 
-  const handleSubmit = () => {
-    navigation.navigate("Home");
-  };
+  return <AuthForm type="login" handleSubmit={handleSubmit} />;
+};
 
-  return (
-    <>
-      <Banner />
+const getError = (code) => {
+  code = code.replace(/auth./, "");
+  code = code.replace(/user/, "email");
 
-      <AuthForm
-        type={"Login"}
-        handleRememberMe={handleRememberMe}
-        handleSubmit={handleSubmit}
-        navigation={navigation}
-      />
-    </>
-  );
+  let error = { input: "", message: code };
+
+  if (code === "invalid-email" || code === "email-not-found")
+    error.input = "email";
+  else error.input = "password";
+
+  return error;
 };
 
 export default Login;

@@ -1,8 +1,10 @@
-import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
 
-const Stars = styled.View`
-  flex-direction: row;
-  gap: 4px;
-`;
+export default StyleSheet.create({
+  container: {
+    margin: -15,
 
-export { Stars };
+    flexDirection: "row",
+    gap: -28,
+  },
+});

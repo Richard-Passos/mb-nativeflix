@@ -1,14 +1,21 @@
-import { Footer as Container, Text } from "./styles";
+import { View } from "react-native";
+import { Text } from "react-native-paper";
 import Link from "../../link";
+import styles from "./styles";
 
-const Footer = ({ isLoginType, opstType }) => (
-  <Container>
-    <Text>
-      {isLoginType ? "Don't have an account? " : "Already registered? "}
-    </Text>
+const Footer = ({ formType }) => {
+  const opstTFormType = formType === "login" ? "Register" : "Login";
 
-    <Link view={opstType}>{`${opstType}!`}</Link>
-  </Container>
-);
+  const text =
+    formType === "login" ? "Don't have an account? " : "Already registered? ";
+
+  return (
+    <View style={styles.footer}>
+      <Text>{text}</Text>
+
+      <Link view={opstTFormType}>{`${opstTFormType}!`}</Link>
+    </View>
+  );
+};
 
 export default Footer;

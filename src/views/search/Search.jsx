@@ -8,45 +8,53 @@ import { List } from "../../components";
 const Search = () => {
   const [medias, setMedias] = useState([]),
     [search, setSearch] = useState(""),
-    [page, setPage] = useState(1);
+    [page, setPage] = useState(1),
+    [loading, setLoading] = useState(false);
 
-  const [debouncedSearch] = useDebounce(search, 500);
+  const [debouncedSearch] = useDebounce(search, 250);
 
-  const handleSearch = (text) => {
-    setSearch(text);
-    setPage(1);
-  };
+  const _getMediasparams = [debouncedSearch, page, setMedias, setLoading];
 
   useEffect(() => {
-    getMedias(debouncedSearch, 1, "restart", setMedias);
+    setPage(1);
+    getMedias(..._getMediasparams, "restart");
   }, [debouncedSearch]);
 
+  /* Infinity scroll */
   useEffect(() => {
-    /* Infinity scroll */
-    getMedias(debouncedSearch, page, "add", setMedias);
+    getMedias(..._getMediasparams, "add");
   }, [page]);
 
   return (
     <>
-      <InputSearch handleSearch={handleSearch} />
+      <InputSearch
+        ph="Media title"
+        value={search}
+        onChange={setSearch}
+        loading={loading}
+      />
 
-      <List data={medias} setPage={setPage} />
+      <List data={medias} page={page} setPage={setPage} />
     </>
   );
 };
 
-const getMedias = (query, page, type, setMedias) => {
+const getMedias = (query, page, setMedias, setLoading, type) => {
+  setLoading(true);
+
   const encondedQuery = encode(query);
 
   mediasApi
     .get(
       `search/multi?api_key=${MEDIAS_KEY}&language=en-US&page=${page}&query=${encondedQuery}`
     )
-    .then(({ data }) =>
+    .then(({ data }) => {
       type === "restart"
         ? setMedias(data.results)
-        : setMedias((prevState) => [...prevState, ...data.results])
-    );
+        : setMedias((state) => [...state, ...data.results]);
+    })
+    .catch(() => setMedias([]))
+    .finally(() => setLoading(false));
 };
 
 export default Search;

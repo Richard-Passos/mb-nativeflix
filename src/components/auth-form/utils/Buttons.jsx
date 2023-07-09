@@ -1,13 +1,23 @@
-import { Buttons as Container, Button, Text } from "./styles";
+import { View } from "react-native";
+import { Button as RNButton, Text } from "react-native-paper";
+import styles from "./styles";
 
-const Buttons = ({ handleSubmit, states, type }) => (
-  <Container>
-    <Button onPress={() => handleSubmit(...states)}>{type}</Button>
+const Buttons = ({ handleSubmit, states, auxSubmit, formType }) => (
+  <View style={styles.buttons}>
+    <Button onPress={() => handleSubmit(...states, ...auxSubmit)}>
+      {formType.capitalize()}
+    </Button>
 
-    <Text>or</Text>
+    <Text style={{ textAlign: "center" }}>or</Text>
 
-    <Button>Google</Button>
-  </Container>
+    <Button disabled>{formType.capitalize()} with Google</Button>
+  </View>
+);
+
+const Button = ({ children, onPress, disabled }) => (
+  <RNButton mode="contained" onPress={onPress} disabled={disabled}>
+    {children}
+  </RNButton>
 );
 
 export default Buttons;

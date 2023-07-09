@@ -16,7 +16,7 @@ const Pagination = ({ route }) => {
     <>
       <GoBack />
 
-      <List data={medias} setPage={setPage} />
+      <List data={medias} page={page} setPage={setPage} />
     </>
   );
 };
@@ -25,9 +25,10 @@ const getMedias = (type, section, page, setMedias) =>
   mediasApi
     .get(`${type}/${section}?api_key=${MEDIAS_KEY}&language=en-US&page=${page}`)
     .then(({ data }) =>
-      setMedias((prevState) =>
-        page === 1 ? data.results : [...prevState, ...data.results]
+      setMedias((state) =>
+        page === 1 ? data.results : [...state, ...data.results]
       )
-    );
+    )
+    .catch(() => setMedias([]));
 
 export default Pagination;

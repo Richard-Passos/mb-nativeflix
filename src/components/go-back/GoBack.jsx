@@ -1,24 +1,21 @@
 import { useNavigation } from "@react-navigation/native";
-import { useContext } from "react";
-import { ThemeContext } from "styled-components/native";
-import { Container } from "./styles";
-import { Icon } from "react-native-elements";
+import { withTheme, IconButton } from "react-native-paper";
+import { opacify } from "polished";
+import styles from "./styles";
 
-const GoBack = () => {
+const GoBack = ({ theme }) => {
   const navigation = useNavigation();
 
-  const theme = useContext(ThemeContext);
-
   return (
-    <Container onPress={() => navigation.goBack()}>
-      <Icon
-        name="chevron-left"
-        type="material-community"
-        size={24}
-        color={theme.colors.opstTheme}
-      />
-    </Container>
+    <IconButton
+      mode="contained"
+      icon="chevron-left"
+      onPress={navigation.goBack}
+      iconColor={theme.colors.onSurface}
+      containerColor={opacify(-0.25, theme.colors.background)}
+      style={styles.icon}
+    />
   );
 };
 
-export default GoBack;
+export default withTheme(GoBack);

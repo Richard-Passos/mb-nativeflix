@@ -1,5 +1,10 @@
-import { Title as Text } from "./styles";
+import { Text } from "react-native-paper";
+import styles from "./styles";
 
-const Title = ({ children }) => <Text>{children}</Text>;
+const Title = ({ children }) => (
+  <Text variant="displaySmall" style={styles.title}>
+    {children.capitalize()}
+  </Text>
+);
 
 export default Title;

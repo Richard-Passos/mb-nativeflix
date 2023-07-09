@@ -1,42 +1,29 @@
-import styled from "styled-components/native";
-import MyButton from "../../button";
-import { FontText } from "../../../utils";
+import { StyleSheet } from "react-native";
 
-const Buttons = styled.View`
-  gap: 8px;
-`;
+const space = 18;
 
-const Button = styled(MyButton)`
-  padding: 12px;
-`;
+export default StyleSheet.create({
+  buttons: {
+    marginTop: space,
 
-const Footer = styled.View`
-  flex-direction: row;
-  justify-content: center;
-`;
+    gap: 8,
+  },
+  footer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  others: {
+    marginTop: -space,
+    marginBottom: -space * 2,
 
-const Text = styled(FontText)`
-  background-color: ${({ theme }) => theme.colors.bg};
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  title: {
+    marginVertical: 12,
 
-  color: ${({ theme }) => theme.colors.secText};
-  text-align: center;
-`;
-
-const Others = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const Row = styled.View`
-  margin-top: -14px;
-`;
-
-const Title = styled(FontText)`
-  margin-vertical: 24px;
-
-  text-align: center;
-  font-size: ${({ theme }) => theme.sizes.xxl}px;
-  font-weight: bold;
-`;
-
-export { Buttons, Button, Footer, Text, Others, Row, Title };
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+});

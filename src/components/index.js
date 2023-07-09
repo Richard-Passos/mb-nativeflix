@@ -1,33 +1,27 @@
 import AuthForm from "./auth-form";
-import Banner from "./banner";
-import BottomNav from "./bottom-nav";
-import Button from "./button";
 import Card from "./card";
 import Carousel from "./carousel";
-import Checkbox from "./checkbox";
 import Footer from "./footer";
 import GoBack from "./go-back";
 import Input from "./input";
-import Label from "./label";
+import Layout from "./layout";
 import Link from "./link";
 import List from "./list";
+import Loading from "./loading";
+import NotFound from "./not-found";
 import Rating from "./rating";
-import Sidebar from "./sidebar";
 
 export {
   AuthForm,
-  Banner,
-  BottomNav,
-  Button,
   Card,
   Carousel,
-  Checkbox,
   Footer,
   GoBack,
   Input,
-  Label,
+  Layout,
   Link,
   List,
+  Loading,
+  NotFound,
   Rating,
-  Sidebar,
 };

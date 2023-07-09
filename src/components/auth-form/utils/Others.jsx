@@ -1,13 +1,30 @@
-import { Others as Container } from "./styles";
-import Checkbox from "../../checkbox";
+import { View } from "react-native";
+import { RadioButton } from "react-native-paper";
 import Link from "../../link";
+import styles from "./styles";
 
-const Others = ({ handleRememberMe }) => (
-  <Container>
-    <Checkbox onPress={handleRememberMe}>Remember me</Checkbox>
+const Others = ({ checked, setChecked }) => (
+  <View style={styles.others}>
+    <Radio
+      label="Remember me"
+      status={checked ? "checked" : "unchecked"}
+      onPress={() => setChecked((state) => !state)}
+    />
 
-    <Link view="Home">Forgot password?</Link>
-  </Container>
+    <Link view="ForgotPass" style={{ marginRight: 28 }}>
+      Forgot password?
+    </Link>
+  </View>
+);
+
+const Radio = ({ label, status, onPress }) => (
+  <RadioButton.Item
+    label={label}
+    status={status}
+    onPress={onPress}
+    position="leading"
+    labelStyle={{ fontSize: 14 }}
+  />
 );
 
 export default Others;

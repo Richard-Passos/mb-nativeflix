@@ -1,23 +1,13 @@
-import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
 
-const Container = styled.View`
-  border-width: 1px;
-  border-color: ${({ theme }) => theme.colors.gray};
-  border-radius: ${({ theme }) => theme.sizes.xl}px;
-  padding: 8px 16px;
+export default StyleSheet.create({
+  progBar: {
+    width: "90%",
+    height: 2,
 
-  flex-direction: row;
-  align-items: center;
-`;
+    position: "absolute",
+    bottom: -5.5,
 
-const TextInput = styled.TextInput`
-  color: ${({ theme }) => theme.colors.priText};
-
-  flex: 1;
-`;
-
-const IconContainer = styled.View`
-  position: absolute;
-  right: 16px;
-`;
-export { Container, TextInput, IconContainer };
+    alignSelf: "center",
+  },
+});

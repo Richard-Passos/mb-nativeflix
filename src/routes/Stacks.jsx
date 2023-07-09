@@ -1,32 +1,31 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer } from "@react-navigation/native";
-import {
-  Login,
-  Register,
-  Home,
-  Details,
-  Search,
-  Pagination,
-  Favorites,
-} from "../views";
+import { useState, useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { FIREBASE_AUTH } from "../../FirebaseConfig";
+import BottomTabs from "./BottomTabs";
+import { Login, Register, ForgotPass, Details, Pagination } from "../views";
 
 const Stack = createNativeStackNavigator();
 
-const views = [Login, Register, Home, Details, Search, Pagination, Favorites];
+const withUserViews = [BottomTabs, Details, Pagination];
+const noUserViews = [Login, Register, ForgotPass];
 
-const Stacks = () => (
-  <NavigationContainer>
-    <Stack.Navigator>
-      {views.map((comp) => (
-        <Stack.Screen
-          key={comp.name}
-          component={comp}
-          name={comp.name}
-          options={{ headerShown: false }}
-        />
-      ))}
+const Stacks = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(FIREBASE_AUTH, (currentUser) => setUser(currentUser));
+  }, []);
+
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {(user ? withUserViews : noUserViews).map(createView)}
     </Stack.Navigator>
-  </NavigationContainer>
+  );
+};
+
+const createView = (comp) => (
+  <Stack.Screen key={comp.name} component={comp} name={comp.name} />
 );
 
 export default Stacks;

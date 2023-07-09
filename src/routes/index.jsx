@@ -1,5 +1,10 @@
-import StacksRouter from "./Stacks";
+import { NavigationContainer } from "@react-navigation/native";
+import Stacks from "./Stacks";
 
-const Router = () => <StacksRouter />;
+const Router = () => (
+  <NavigationContainer>
+    <Stacks />
+  </NavigationContainer>
+);
 
 export default Router;

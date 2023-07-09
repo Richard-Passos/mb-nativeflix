@@ -1,33 +1,35 @@
-import { Container, Title, Text, Gap, BG } from "./styles";
+import { withTheme, Text } from "react-native-paper";
+import { View } from "react-native";
 import Rating from "../../rating";
-import Link from "../../link";
+import styles from "./styles";
 
-const Info = ({ media, link }) => {
-  const { title, rating, overview } = normData(media);
+const Info = ({ data, theme }) => {
+  const { title, rating, overview } = data;
 
   return (
-    <>
-      <Container>
-        <Gap>
-          <Title numberOfLines={1}>{title}</Title>
+    <View
+      style={{
+        ...styles.container,
+        backgroundColor: theme.colors.backgroundVariant,
+      }}
+    >
+      <View style={{ gap: 4 }}>
+        <Text style={{ fontWeight: "bold" }} numberOfLines={1}>
+          {title}
+        </Text>
 
-          <Rating rating={rating} />
-        </Gap>
+        <Rating rating={rating} />
+      </View>
 
-        <Link {...link}>
-          <Text numberOfLines={6}>{overview}</Text>
-        </Link>
-      </Container>
-
-      <BG />
-    </>
+      <Text
+        style={{ color: theme.colors.onBackground }}
+        variant="labelSmall"
+        numberOfLines={5}
+      >
+        {"\t" + overview}
+      </Text>
+    </View>
   );
 };
 
-const normData = ({ title, name, vote_average, overview }) => ({
-  title: title || name,
-  rating: Math.ceil(vote_average / 2) || 0,
-  overview: overview || "Overview not found!",
-});
-
-export default Info;
+export default withTheme(Info);

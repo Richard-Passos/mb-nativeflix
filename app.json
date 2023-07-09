@@ -4,12 +4,12 @@
     "slug": "NativeFlix",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/images/logo.png",
+    "icon": "./src/assets/images/favicon.png",
     "userInterfaceStyle": "dark",
     "splash": {
       "image": "./src/assets/images/logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#03030D"
+      "backgroundColor": "#0A0A15"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -18,7 +18,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/logo.png",
-        "backgroundColor": "#03030D"
+        "backgroundColor": "#0A0A15"
       }
     },
     "web": {

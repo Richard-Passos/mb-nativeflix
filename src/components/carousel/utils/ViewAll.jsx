@@ -1,12 +1,21 @@
-import { ViewAll as Container } from "./styles";
+import { withTheme } from "react-native-paper";
+import { View } from "react-native";
 import Link from "../../link";
+import styles from "./styles";
 
-const ViewAll = ({ params }) => (
-  <Container>
-    <Link view={"Pagination"} params={params} secondary>
-      View all
-    </Link>
-  </Container>
-);
+const ViewAll = ({ theme, params }) => {
+  return (
+    <View
+      style={{
+        ...styles.container,
+        backgroundColor: theme.colors.backgroundVariant,
+      }}
+    >
+      <Link view="Pagination" params={params} secondary>
+        View all
+      </Link>
+    </View>
+  );
+};
 
-export default ViewAll;
+export default withTheme(ViewAll);

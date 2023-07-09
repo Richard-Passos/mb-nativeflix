@@ -1,4 +1,4 @@
-import IMG_ORIGIN_PATH from "./IMG_ORIGIN_PATH";
+const IMG_ORIGIN_PATH = "https://image.tmdb.org/t/p/original";
 
 export default (path) =>
   path

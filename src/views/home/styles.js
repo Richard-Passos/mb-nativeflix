@@ -1,19 +1,19 @@
-import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
 
 const paddingTop = 16;
 
-const Container = styled.ScrollView`
-  padding-top: ${paddingTop}px;
+export default StyleSheet.create({
+  container: {
+    paddingTop,
 
-  background-color: ${({ theme }) => theme.colors.bg};
-`;
+    flex: 1,
+  },
+  carousels: {
+    marginVertical: 24,
 
-const Gap = styled.View`
-  gap: 28px;
-`;
-
-const SpaceOnBottomPage = styled.View`
-  height: ${paddingTop * 2}px;
-`;
-
-export { Container, Gap, SpaceOnBottomPage };
+    gap: 24,
+  },
+  height: {
+    height: paddingTop,
+  },
+});

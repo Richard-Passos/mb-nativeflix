@@ -1,38 +1,59 @@
-import { useState } from "react";
-import { Container } from "./styles";
-import { Title, Row, Others, Buttons, Footer } from "./utils";
+import { useState, useEffect } from "react";
+import { withTheme } from "react-native-paper";
+import { View } from "react-native";
+import { Title, Rows, Others, Buttons, Footer } from "./utils";
+import WavesSvg from "../../assets/images/waves.svg";
+import styles from "./styles";
+import { viewWidth, viewHeight } from "../../utils";
 
-const AuthForm = ({ type, handleRememberMe, handleSubmit }) => {
+const AuthForm = ({ theme, type, handleSubmit }) => {
   const [name, setName] = useState(""),
     [email, setEmail] = useState(""),
-    [password, setPassword] = useState("");
+    [password, setPassword] = useState(""),
+    [persistUser, setPersistUser] = useState(false),
+    [error, setError] = useState({ input: "", message: "" });
 
-  const isLoginType = type === "Login",
-    opstType = isLoginType ? "Register" : "Login";
+  const clearInputs = () => {
+    setName("");
+    setEmail("");
+    setPassword("");
+  };
+
+  useEffect(() => {
+    setError({ input: "", message: "" });
+  }, [name, email, password]);
 
   return (
-    <Container>
-      <Title>{type}</Title>
+    <View style={{ backgroundColor: theme.colors.background }}>
+      <View style={styles.form}>
+        <Title>{type}</Title>
 
-      {!isLoginType && (
-        <Row type="Name" setState={setName} placeholder="John Doe" />
-      )}
+        <Rows
+          formType={type}
+          states={[name, email, password]}
+          sets={[setName, setEmail, setPassword]}
+          error={error}
+        />
 
-      <Row type="Email" setState={setEmail} placeholder="example@email.com" />
+        {type === "login" && (
+          <Others checked={persistUser} setChecked={setPersistUser} />
+        )}
 
-      <Row type="Password" setState={setPassword} placeholder="••••••••" />
+        <Buttons
+          handleSubmit={handleSubmit}
+          states={[email, password, name]}
+          auxSubmit={[persistUser, clearInputs, setError]}
+          formType={type}
+        />
 
-      {isLoginType && <Others handleRememberMe={handleRememberMe} />}
+        <Footer formType={type} />
+      </View>
 
-      <Buttons
-        handleSubmit={handleSubmit}
-        states={[email, password, name]}
-        type={type}
-      />
-
-      <Footer isLoginType={isLoginType} opstType={opstType} />
-    </Container>
+      <View style={styles.bgImage}>
+        <WavesSvg width={viewWidth} height={viewHeight * 0.7} />
+      </View>
+    </View>
   );
 };
 
-export default AuthForm;
+export default withTheme(AuthForm);

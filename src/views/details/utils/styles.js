@@ -1,61 +1,38 @@
-import styled from "styled-components/native";
-import { viewHeight, FontText } from "../../../utils";
-import { opacify } from "polished";
-import { Button } from "../../../components";
+import { StyleSheet } from "react-native";
+import { viewWidth, viewHeight } from "../../../utils";
 
-const Container = styled.View`
-  min-height: ${viewHeight * 0.68}px;
+export default StyleSheet.create({
+  image: {
+    width: viewWidth,
+    height: viewWidth,
+  },
+  infoCon: {
+    minHeight: viewHeight * 1.1 - viewWidth,
 
-  margin-top: -${viewHeight * 0.1}px;
-  border-top-right-radius: ${({ theme }) => theme.sizes.xxl}px;
-  border-top-left-radius: ${({ theme }) => theme.sizes.xxl}px;
-  padding: 32px;
+    marginTop: -viewHeight * 0.1,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 32,
 
-  background-color: ${({ theme }) => theme.colors.bg};
+    gap: 20,
+  },
+  carousel: {
+    marginTop: -32,
+    marginHorizontal: 0,
+  },
+  cardCon: {
+    width: 125,
+    height: 150,
 
-  gap: 20px;
-`;
+    marginBottom: 12,
+    borderRadius: 16,
+    padding: 20,
 
-const Row = styled.View`
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 24px;
-`;
+    justifyContent: "space-between",
+  },
+  modal: {
+    width: viewWidth * 0.95,
 
-const Title = styled(FontText)`
-  font-size: ${({ theme }) => theme.sizes.xxl}px;
-  font-weight: bold;
-`;
-
-const Text = styled(FontText)`
-  color: ${({ theme }) => theme.colors.secText};
-  font-size: ${({ theme }) => theme.sizes.sm}px;
-  line-height: 18px;
-`;
-
-const CardCon = styled.View`
-  width: 125px;
-  height: 150px;
-
-  margin-bottom: 12px;
-  border-radius: ${({ theme }) => theme.sizes.md}px;
-  padding: 20px;
-
-  background-color: ${({ theme }) => opacify(-0.9, theme.colors.opstTheme)};
-
-  justify-content: space-between;
-`;
-
-const Gap = styled.View`
-  gap: 4px;
-`;
-
-const CardText = styled(FontText)`
-  font-weight: bold;
-`;
-
-const Trailer = styled(Button)`
-  background-color: ${({ theme }) => theme.colors.red};
-`;
-
-export { Container, Row, Title, Text, CardCon, CardText, Gap, Trailer };
+    alignSelf: "center",
+  },
+});

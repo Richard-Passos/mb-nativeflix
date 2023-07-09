@@ -1,16 +1,18 @@
-import { Container, Title, FlatList, Separator } from "./styles";
+import { Text } from "react-native-paper";
+import { View, FlatList } from "react-native";
 import { ViewAll } from "./utils";
+import styles from "./styles";
 
-const Carousel = (props) => {
-  const { title, data, renItem, keyExt, params, titleStyle, style } = props;
-
+const Carousel = ({ renItem, keyExt, style, title, data, params }) => {
   const renderItem = ({ item }) => renItem(item);
-  const keyExtractor = (item) => keyExt(item);
-  const separator = () => <Separator />;
+  const keyExtractor = keyExt;
+  const separator = <View style={{ width: 16 }} />;
 
   return (
-    <Container>
-      <Title style={titleStyle}>{title.replace(/[-_]/g, " ")}</Title>
+    <View style={{ ...styles.Container, ...style }}>
+      <Text style={{ fontWeight: "bold" }} variant="titleMedium">
+        {title.replace(/[-_]/g, " ")}
+      </Text>
 
       <FlatList
         horizontal
@@ -20,9 +22,8 @@ const Carousel = (props) => {
         ItemSeparatorComponent={separator}
         ListFooterComponent={params && <ViewAll params={params} />}
         ListFooterComponentStyle={{ alignSelf: "flex-end" }}
-        style={style}
       />
-    </Container>
+    </View>
   );
 };
 

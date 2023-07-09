@@ -1,26 +1,20 @@
-import { useContext } from "react";
-import { ThemeContext } from "styled-components/native";
-import { Stars } from "./styles";
-import { Icon } from "react-native-elements";
+import { withTheme, IconButton } from "react-native-paper";
+import { View } from "react-native";
+import styles from "./styles";
 
 const starsNum = Array(5).fill("");
 
-const Rating = ({ rating }) => {
-  const theme = useContext(ThemeContext);
+const Rating = ({ rating, theme }) => (
+  <View style={styles.container}>
+    {starsNum.map((_, i) => (
+      <IconButton
+        key={i}
+        icon="star"
+        size={16}
+        iconColor={i + 1 <= rating ? theme.colors.yellow : theme.colors.gray}
+      />
+    ))}
+  </View>
+);
 
-  return (
-    <Stars>
-      {starsNum.map((_, i) => (
-        <Icon
-          key={i}
-          name="star"
-          type="font-awesome"
-          size={16}
-          color={i + 1 <= rating ? theme.colors.yellow : theme.colors.dark}
-        />
-      ))}
-    </Stars>
-  );
-};
-
-export default Rating;
+export default withTheme(Rating);

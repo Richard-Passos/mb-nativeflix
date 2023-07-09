@@ -1,39 +1,33 @@
-import { useState, useContext } from "react";
-import { ThemeContext } from "styled-components/native";
-import { Container, TextInput, IconContainer } from "./styles";
-import { Icon } from "react-native-elements";
+import { View } from "react-native";
+import { TextInput, ErrorText } from "./utils";
+import { ProgressBar } from "react-native-paper";
+import styles from "./styles";
 
-const Input = (props) => {
-  const { reactRef, setState, isPassword = false, placeholder, style } = props;
-
-  const [isVisible, setIsVisible] = useState(false);
-
-  const theme = useContext(ThemeContext);
+const Input = ({ type, value, iconName, ph, error, setValue, progBar }) => {
+  const isError = error?.input === type,
+    barProgress = value.length < 6 ? value.length / 10 : 1;
 
   return (
-    <Container>
+    <View>
       <TextInput
-        ref={reactRef}
-        onChangeText={(text) => setState(text)}
-        secureTextEntry={isPassword && !isVisible}
-        placeholder={placeholder}
-        placeholderTextColor={theme.colors.gray}
-        cursorColor={theme.colors.gray}
-        style={style}
+        iconName={iconName}
+        type={type}
+        ph={ph}
+        isError={isError}
+        value={value}
+        onChange={(text) => setValue(text)}
       />
 
-      {isPassword && (
-        <IconContainer>
-          <Icon
-            name={isVisible ? "eye" : "eye-slash"}
-            type="font-awesome"
-            size={16}
-            color={theme.colors.priText}
-            onPress={() => setIsVisible((prevState) => !prevState)}
-          />
-        </IconContainer>
+      {progBar && (
+        <ProgressBar
+          progress={barProgress}
+          visible={value.length}
+          style={styles.progBar}
+        />
       )}
-    </Container>
+
+      <ErrorText visible={isError} text={error?.message || ""} />
+    </View>
   );
 };
 

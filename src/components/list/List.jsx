@@ -1,30 +1,35 @@
 import { useMemo } from "react";
-import { FlatList, Text } from "./styles";
+import { withTheme, Text } from "react-native-paper";
+import { FlatList, View } from "react-native";
 import Card from "../card";
-import { View } from "react-native";
+import styles from "./styles";
 
-const List = ({ data, setPage }) => {
+const List = ({ data, page, setPage, theme }) => {
   const memoData = useMemo(() => data, [data]);
 
   const renderItem = ({ item }) => (
-    <Card media={item} style={{ marginBottom: 20 }} styleVar="detailed" />
+    <Card media={item} styleVar="detailed" style={{ marginBottom: 20 }} />
   );
-  const onEndReached = () => setPage((prevState) => ++prevState);
+  const keyExtractor = (item) => item.id + page;
+  const onEndReached = () => setPage((state) => ++state);
 
-  return memoData.length ? (
-    <FlatList
-      data={memoData}
-      renderItem={renderItem}
-      keyExtractor={(item) => item.id}
-      onEndReached={onEndReached}
-      onEndReachedThreshold={0.4}
-      /* Adding space on bottom page */
-      ListFooterComponent={<View style={{ height: 16 }} />}
-      contentContainerStyle={{ alignItems: "center" }}
-    />
-  ) : (
-    <Text>"None media matched your query."</Text>
+  return (
+    <View
+      style={{ ...styles.container, backgroundColor: theme.colors.background }}
+    >
+      {memoData.length ? (
+        <FlatList
+          data={memoData}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          onEndReached={onEndReached}
+          onEndReachedThreshold={0.4}
+        />
+      ) : (
+        <Text variant="titleMedium">None media matched your query.</Text>
+      )}
+    </View>
   );
 };
 
-export default List;
+export default withTheme(List);
