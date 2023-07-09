@@ -1,32 +1,26 @@
   <h1 align="center">:file_cabinet: NativeFlix</h1>
 
 ## :memo: Descrição
-Desafio Fullture: criando um app de listagem de mídias com React Native. Aplicativo desenvolvido com o objetivo de fornecer uma experiência aprimorada na listagem de mídias de um banco de dados utilizando a API do TMDB. Com o uso do react-navigation para uma navegação suave entre páginas e do styled-components para uma estilização elegante, proporcionando uma experiência de usuário atraente e intuitiva.
+Desafio Fullture: criando um app de listagem de mídias com React Native. Aplicativo desenvolvido com o objetivo de fornecer uma experiência aprimorada na listagem de mídias de um banco de dados utilizando a API do TMDB. Com o uso do react-navigation para uma navegação suave entre páginas e do StyleSheet para uma estilização elegante, proporcionando uma experiência de usuário atraente e intuitiva.
 
 Recursos Principais:
 
-1- Páginas Auth (Login e Register): Sendo disponível somente a estilização inicial de ambas.
+1- Páginas Auth (Login e Register): Podendo logar ou registrar um usuário, podendo também lidar com erros, troca de senha e persitir os dados de login.
 
-2- Página Inicial (Home): Oferecendo uma visualização geral das mídias disponíveis. Os usuários podem explorar e escolher entre ver todos os tipos de mídias, somente filmes ou somente séries. Essa página fornece uma visão geral dos títulos disponíveis e atrai os usuários para explorar mais detalhes.
+2- Página Inicial (Home): Oferecendo uma visualização geral das mídias disponíveis. Essa página fornece uma visão geral dos títulos disponíveis e atrai os usuários para explorar mais detalhes.
 
-3- Página de Detalhes (Details): Ao selecionar uma mídia específica na página inicial, os usuários são direcionados a esta página para obter informações detalhadas sobre a mídia selecionada. Essa página é gerada dinamicamente através de parâmetros fornecidos pelo react-navigation, garantindo uma experiência personalizada para cada título selecionado.
+3- Página de Detalhes (Details): Ao selecionar uma mídia específica, os usuários são direcionados a esta página para obter informações detalhadas sobre a mídia selecionada. Essa página é gerada dinamicamente através de parâmetros fornecidos pelo react-navigation, garantindo uma experiência personalizada para cada título selecionado.
 
 4- Página de Listagem Ampla (Pagination): Essa página permite que os usuários naveguem por uma listagem mais ampla de mídias, aplicando um recurso de scroll infinito. Isso garante que os usuários possam descobrir e explorar uma grande quantidade de títulos de forma contínua, sem limitações de páginação tradicionais.
 
-TODO:
-- Página de login e register
-- Troca de temas
-- Bottom Navigation
-- Página de search
-- Melhorias na organização
-- Melhorias no design
-- Página de favoritos
-- Adicionar estado global com redux
+5- Página de Pesquisa (Search): Podendo pesquisar mídias por seus títulos, também aplicando o scroll infinito.
+
+6- Página de Configurações (Settings): Essa página permite que o usuário faça o logout de sua conta ou até mesmo que a exclua.
 
 ## :wrench: Tecnologias utilizadas
 * ReactNative;
+* Expo;
 * JavaScript;
-* Styled-components;
 
 ## :rocket: Rodando o projeto
 Para rodar o repositório é recomendado seguir os seguintes passos:
@@ -51,11 +45,20 @@ npm i
 ```
 touch .env
 ``` 
-6º - Colocar sua API key dentro do arquivo .env
+6º - Colocar sua API key do TMDB dentro do arquivo .env
 ```
 MEDIAS_KEY=SUA_API_KEY
 ```
-6º - Rodar projeto com expo
+7º - Colocar os seus dados de configuração do firebase seguindo o modelo do arquivo .env.example
+```
+AUTH_KEY=apiKey
+AUTH_DOMAIN=authDomain
+AUTH_PROJECT_ID=projectId
+AUTH_STORAGE_BUCKET=storageBucket
+AUTH_MESSAGING_SENDER_ID=messagingSenderId
+AUTH_APP_ID=appId
+```
+8º - Rodar projeto com expo
 ```
 npm start
 ```
@@ -74,4 +77,4 @@ npm start
 </table>
 
 ## :dart: Status do projeto
-Em produção
+Finalizado
