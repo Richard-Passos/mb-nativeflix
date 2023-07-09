@@ -49,7 +49,7 @@ touch .env
 ```
 MEDIAS_KEY=SUA_API_KEY
 ```
-7º - Colocar os seus dados de configuração do firebase seguindo o modelo do arquivo .env.example
+7º - Ainda no arquivi .env, colocar os seus dados de configuração do firebase seguindo o modelo do arquivo .env.example
 ```
 AUTH_KEY=apiKey
 AUTH_DOMAIN=authDomain
