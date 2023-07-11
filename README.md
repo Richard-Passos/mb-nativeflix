@@ -5,8 +5,8 @@ Desafio Fullture: criando um app de listagem de mídias com React Native. Aplica
 
 Demo: 
 
-[![Watch the video](![image](https://github.com/Richard-Passos/nativeflix/assets/104469731/5fa8aaa4-8360-4253-af85-320618696f1b)
-)](https://youtu.be/vt5fpE0bzSY)
+
+https://github.com/Richard-Passos/nativeflix/assets/104469731/74c97695-d500-4e56-83d8-f10b6079375f
 
 
 Recursos Principais:
