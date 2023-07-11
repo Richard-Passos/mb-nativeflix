@@ -7,10 +7,9 @@ import {
   AUTH_APP_ID,
 } from "@env";
 import { initializeApp } from "firebase/app";
-import { initializeAuth } from "firebase/auth";
+import { initializeAuth, getAuth } from "firebase/auth";
 import { getReactNativePersistence } from "firebase/auth/react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: AUTH_KEY,

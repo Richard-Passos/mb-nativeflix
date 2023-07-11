@@ -8,7 +8,7 @@ import {
   deleteUser,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { FIREBASE_AUTH } from "../../../FirebaseConfig";
+import { FIREBASE_AUTH } from "../../../firebaseConfig";
 
 const auth = FIREBASE_AUTH;
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FIREBASE_AUTH } from "../../../FirebaseConfig";
+import { FIREBASE_AUTH } from "../../../firebaseConfig";
 import { View } from "react-native";
 import { Text } from "react-native-paper";
 import { Modal, Buttons } from "./utils";

@@ -1,4 +1,4 @@
-import { FIREBASE_AUTH } from "../../../../FirebaseConfig";
+import { FIREBASE_AUTH } from "../../../../firebaseConfig";
 import { withTheme, Text } from "react-native-paper";
 import { View } from "react-native";
 import styles from "./styles";
