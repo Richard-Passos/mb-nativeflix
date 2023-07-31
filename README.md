@@ -29,8 +29,7 @@ Recursos Principais:
 * JavaScript;
 
 ## :rocket: Rodando o projeto
-Para rodar o repositório é recomendado seguir os seguintes passos:
-<br>
+### Para rodar o repositório é recomendado seguir os seguintes passos:
 1º - Inicializar o git
 ```
 git init
@@ -55,7 +54,7 @@ touch .env
 ```
 MEDIAS_KEY=SUA_API_KEY
 ```
-7º - Ainda no arquivi .env, colocar os seus dados de configuração do firebase seguindo o modelo do arquivo .env.example
+7º - Ainda no arquivo .env, colocar os seus dados de configuração do firebase seguindo o modelo do arquivo .env.example
 ```
 AUTH_KEY=SUA_FIREBASE_API_KEY
 AUTH_DOMAIN=SUA_FIREBASE_AUTH_DOMAIN
