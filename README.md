@@ -1,13 +1,13 @@
-  <h1 align="center">:file_cabinet: NativeFlix</h1>
+<h1 align="center">:file_cabinet: NativeFlix</h1>
 
-## :memo: Descrição
+<br>
+
+## :memo: Description
 Desafio Fullture: criando um app de listagem de mídias com React Native. Aplicativo desenvolvido com o objetivo de fornecer uma experiência aprimorada na listagem de mídias de um banco de dados utilizando a API do TMDB. Com o uso do react-navigation para uma navegação suave entre páginas e do StyleSheet para uma estilização elegante, proporcionando uma experiência de usuário atraente e intuitiva.
 
 Demo: 
 
-
-https://github.com/Richard-Passos/nativeflix/assets/104469731/74c97695-d500-4e56-83d8-f10b6079375f
-
+https://github.com/Richard-Passos/mb-nativeflix/assets/104469731/5dc87e96-2488-4420-a96b-0d3f58624978
 
 Recursos Principais:
 
@@ -23,56 +23,64 @@ Recursos Principais:
 
 6- Página de Configurações (Settings): Essa página permite que o usuário faça o logout de sua conta ou até mesmo que a exclua.
 
-## :wrench: Tecnologias utilizadas
-* ReactNative;
-* Expo;
-* JavaScript;
+<br>
 
-## :rocket: Rodando o projeto
-### Para rodar o repositório é recomendado seguir os seguintes passos:
-1º - Inicializar o git
+## :wrench: Technologies used
+* React Native
+* Expo
+* JavaScript
+
+<br>
+
+## :rocket: Run project
+01 - Clone repositiry
 ```
-git init
+git clone https://github.com/Richard-Passos/mb-nativeflix
 ```
-2º - Clonar o projeto
+
+02 - Enter project directory
 ```
-git clone https://github.com/Richard-Passos/nativeflix
+cd mb-nativeflix
 ```
-3º - Entrar na pasta do projeto
-```
-cd nativeflix
-```
-4º - Instalar dependências
+
+03 - Install dependencies
 ```
 npm i
 ```
-5º - Criar arquivo .env
+
+04 - Create file .env
 ```
 touch .env
-``` 
-6º - Colocar sua API key do TMDB dentro do arquivo .env
 ```
-MEDIAS_KEY=SUA_API_KEY
+
+05 - Put your API key from TMDB inside .env
 ```
-7º - Ainda no arquivo .env, colocar os seus dados de configuração do firebase seguindo o modelo do arquivo .env.example
+MEDIAS_KEY=your_api_key
 ```
-AUTH_KEY=SUA_FIREBASE_API_KEY
-AUTH_DOMAIN=SUA_FIREBASE_AUTH_DOMAIN
-AUTH_PROJECT_ID=SUA_FIREBASE_PROJECT_ID
-AUTH_STORAGE_BUCKET=SUA_FIREBASE_STORAGE_BUCKET
-AUTH_MESSAGING_SENDER_ID=SUA_FIREBASE_MESSAGING_SENDER_ID
-AUTH_APP_ID=SUA_FIREBASE_APP_ID
+
+06 - Still in .env, put your Firebase configuration data
 ```
-8º - Rodar projeto com expo
+AUTH_KEY=your_firbase_api_key
+AUTH_DOMAIN=your_firbase_auth_domain
+AUTH_PROJECT_ID=your_firbase_project_id
+AUTH_STORAGE_BUCKET=your_firbase_storage_bucket
+AUTH_MESSAGING_SENDER_ID=your_firbase_messaging_sender_id
+AUTH_APP_ID=your_firbase_app_id
+```
+
+07 - Run project with expo
 ```
 npm start
 ```
-## :handshake: Colaboradores
+
+<br>
+
+## :handshake: Team
 <table>
   <tr>
     <td align="center">
       <a href="https://github.com/Richard-Passos">
-        <img src="https://img.freepik.com/vetores-premium/desenho-de-desenho-animado-de-um-programador_29937-8176.jpg" width="100px;" alt="Programador"/><br>
+        <img src="https://img.freepik.com/vetores-premium/desenho-de-desenho-animado-de-um-programador_29937-8176.jpg" width="100px;" alt="A boy with headphones holding a laptop."/><br>
         <sub>
           <b>Richard P</b>
         </sub>
@@ -81,5 +89,7 @@ npm start
   </tr>
 </table>
 
-## :dart: Status do projeto
-Finalizado
+<br>
+
+## :dart: Status
+Finished
